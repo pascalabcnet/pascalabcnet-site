@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { externalLinks } from '../data/external-links';
+import ExternalLink from './ExternalLink.astro';
+import Icon from './Icon.astro';
+const news=(await getCollection('news',({data})=>!data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf()).slice(0,4);
+const dateFormat=new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'2-digit'});
+---
+<aside class="news-sidebar" aria-label="Новости и актуальная информация">
+  <h2>Новости</h2>
+  {news.map(item=><article class="news-item"><time datetime={item.data.date.toISOString()}>{dateFormat.format(item.data.date)}</time><a href={item.data.externalUrl??`/news/${item.id}`} target={item.data.externalUrl?'_blank':undefined} rel={item.data.externalUrl?'noopener noreferrer':undefined}>{item.data.title}</a></article>)}
+  <div class="news-archive"><a href="/news">Архив новостей →</a></div>
+  <div class="sidebar-footer">
+    <section class="product-status" aria-labelledby="product-status-title">
+      <span class="product-status-label">Актуальная версия</span>
+      <strong id="product-status-title" class="product-status-version">PascalABC.NET 4.0</strong>
+      <p class="product-status-lead">Новое поколение PascalABC.NET</p>
+      <ul>
+        <li><strong>Multitarget</strong>: .NET Framework 4.7.2 + .NET 10</li>
+        <li>VS Code + IntelliSense</li>
+        <li><ExternalLink href={externalLinks.mlPascalABC} label="ML PascalABC.NET" /></li>
+      </ul>
+      <a class="product-status-link" href="/whats-new/pascalabcnet-4.0">Что нового в 4.0 →</a>
+    </section>
+    <ExternalLink href={externalLinks.telegramChannel} label="Telegram-канал" class="sidebar-link"><Icon name="telegram" class="sidebar-icon" />Telegram-канал</ExternalLink>
+    <ExternalLink href={externalLinks.maxChannel} label="MAX-канал" class="sidebar-link"><Icon name="max" class="sidebar-icon" />MAX-канал</ExternalLink>
+  </div>
+</aside>

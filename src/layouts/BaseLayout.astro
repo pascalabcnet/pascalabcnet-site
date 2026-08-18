@@ -1,0 +1,21 @@
+---
+import Header from '../components/Header.astro'; import Footer from '../components/Footer.astro'; import CodeCopy from '../components/CodeCopy.astro'; import '../styles/global.css';
+interface Props {title?:string;description?:string;image?:string;}
+const {title='PascalABC.NET',description='Современная система программирования на языке Паскаль.',image}=Astro.props;const canonical=new URL(Astro.url.pathname,Astro.site);const pageTitle=title==='PascalABC.NET'?title:`${title} — PascalABC.NET`;
+---
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#306998"/><link rel="canonical" href={canonical}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><meta property="og:type" content="website"/><meta property="og:locale" content="ru_RU"/><meta property="og:site_name" content="PascalABC.NET"/><meta property="og:title" content={pageTitle}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/>{image&&<meta property="og:image" content={new URL(image,Astro.site)}/>}<title>{pageTitle}</title></head><body><div class="container"><Header/><main id="main-content"><slot/></main><Footer/></div><CodeCopy/>
+<!-- Top.Mail.Ru counter -->
+<script is:inline type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "1424496", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=1424496;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+</body></html>

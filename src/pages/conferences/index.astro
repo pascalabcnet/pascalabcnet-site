@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConferenceArchiveCard from '../../components/ConferenceArchiveCard.astro';
+
+const items = (await getCollection('conferences', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.year - a.data.year);
+---
+
+<BaseLayout
+  title="Конференции"
+  description="Всероссийская научно-методическая конференция об использовании PascalABC.NET в обучении программированию"
+>
+  <article class="conference-page">
+    <header class="conference-intro">
+      <p class="conference-eyebrow">Институт математики, механики и компьютерных наук им. И.И. Воровича ЮФУ</p>
+      <h1>Конференции PascalABC.NET</h1>
+      <p class="conference-lead">Всероссийская научно-методическая конференция «Использование системы программирования PascalABC.NET в обучении программированию» объединяет школьных учителей информатики, преподавателей вузов и учреждений дополнительного образования, методистов и всех, кто занимается обучением программированию.</p>
+
+      <div class="conference-intro-grid">
+        <p>На конференции обсуждаются современные подходы к преподаванию программирования, развитие PascalABC.NET и опыт её применения в образовательном процессе: начальное обучение, подготовка к ЕГЭ и олимпиадам, автоматическая проверка заданий, учебные курсы и проекты, новые возможности языка и среды.</p>
+        <p>Особое внимание уделяется обучению на современном статически типизированном языке. PascalABC.NET помогает с первых шагов формировать представления о типах данных, структуре программ и принципах построения надёжного кода.</p>
+        <p>Конференция служит площадкой для обсуждения развития системы. Здесь представлялись интеграция с Jupyter Notebook и Linux, онлайн-курсы, машинное обучение и влияние генеративного искусственного интеллекта на обучение программированию.</p>
+      </div>
+
+      <dl class="conference-facts" aria-label="Конференции в цифрах">
+        <div><dt>5</dt><dd>конференций проведено</dd></div>
+        <div><dt>2019</dt><dd>год первой конференции</dd></div>
+        <div><dt>2 года</dt><dd>периодичность в последние годы</dd></div>
+      </dl>
+    </header>
+
+    <section class="conference-archive" aria-labelledby="conference-archive-title">
+      <div class="conference-section-heading">
+        <div>
+          <p class="conference-eyebrow">2019–2025</p>
+          <h2 id="conference-archive-title">Архив конференций</h2>
+        </div>
+        <p>Программы, видеозаписи и презентации собраны в обратном хронологическом порядке.</p>
+      </div>
+      <div class="conference-list">
+        {items.map(item => <ConferenceArchiveCard item={item} />)}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

@@ -1,0 +1,5 @@
+---
+interface Props { href: string | null; label: string; class?: string; }
+const { href, label, class: className } = Astro.props;
+---
+{href ? <a href={href} class={className} target="_blank" rel="noopener noreferrer"><slot>{label}</slot></a> : <span class:list={[className,'link-todo']} title={`TODO: добавить URL для «${label}»`}><slot>{label}</slot><span class="sr-only"> — адрес ожидается</span></span>}

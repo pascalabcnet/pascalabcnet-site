@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import ExamplesLayout from '../layouts/ExamplesLayout.astro';
+
+const entries = (await getCollection('examples', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order);
+const groups = entries.reduce((result, entry) => {
+  const group = result.find((item) => item.title === entry.data.group);
+  if (group) group.entries.push(entry);
+  else result.push({ title: entry.data.group, entries: [entry] });
+  return result;
+}, [] as { title: string; entries: typeof entries }[]);
+---
+
+<ExamplesLayout title="Примеры кода" description="Примеры программ на PascalABC.NET с объяснениями" entries={entries}>
+  <p class="examples-intro">Тематические подборки небольших программ на PascalABC.NET. Каждый пример сопровождается объяснением, подсветкой синтаксиса и кнопкой копирования.</p>
+  <div class="examples-catalog">
+    {groups.map((group) => (
+      <section>
+        <h2>{group.title}</h2>
+        <div class="examples-topic-grid">
+          {group.entries.map((entry) => (
+            <a href={`/examples/${entry.data.slug ?? entry.id}`}>
+              <strong>{entry.data.title}</strong>
+              <span>{entry.data.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</ExamplesLayout>

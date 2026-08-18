@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsArchive from '../../components/NewsArchive.astro';
+const pageSize = 10;
+const allItems = (await getCollection('news', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const items = allItems.slice(0, pageSize);
+const totalPages = Math.ceil(allItems.length / pageSize);
+---
+<BaseLayout title="Новости" description="Новости проекта PascalABC.NET"><NewsArchive items={items} currentPage={1} totalPages={totalPages} /></BaseLayout>

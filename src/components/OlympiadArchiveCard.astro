@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  item: CollectionEntry<'olympiads'>;
+}
+
+const { item } = Astro.props;
+const data = item.data;
+---
+
+<article id={`olympiad-${data.year}`} class:list={['olympiad-card', { 'olympiad-card-featured': data.featured }]}>
+  <div class="olympiad-year" aria-hidden="true">{data.year}</div>
+  <div class="olympiad-card-body">
+    {data.featured && <p class="olympiad-current">Последняя проведённая</p>}
+    <div class="olympiad-card-heading">
+      <div>
+        <h3>{data.ordinal}</h3>
+        <p>{data.description}</p>
+      </div>
+      <dl class="olympiad-meta">
+        <div><dt>Дата</dt><dd>{data.date}</dd></div>
+        <div><dt>Формат</dt><dd>{data.format}</dd></div>
+        <div><dt>Участники</dt><dd>{data.grades}</dd></div>
+      </dl>
+    </div>
+
+    <div class="olympiad-task-summary">
+      <span>{data.taskCount} задач</span>
+      {data.levels.length > 0 && <span>Уровни {data.levels.join(', ')}</span>}
+      <span>Язык решений — PascalABC.NET</span>
+    </div>
+
+    <div class="olympiad-card-links">
+      <a class="olympiad-resource olympiad-resource-primary" href={data.conditionsUrl} target="_blank" rel="noopener noreferrer">
+        <span>Условия олимпиады</span><small>PDF</small>
+      </a>
+      <a class="olympiad-resource" href={data.solutionsUrl} download>
+        <span>Решения задач</span><small>ZIP · исходники PascalABC.NET</small>
+      </a>
+    </div>
+  </div>
+</article>
+

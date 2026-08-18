@@ -1,0 +1,24 @@
+---
+const { items, currentPage, totalPages } = Astro.props;
+const format = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+const pageHref = (page: number) => page === 1 ? '/news' : `/news/${page}`;
+---
+<section class="archive-page">
+  <h1>Новости</h1>
+  <ul class="archive-list">
+    {items.map((item: any) => <li>
+      <time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time>
+      <h2><a href={item.data.externalUrl ?? `/news/${item.id}`} target={item.data.externalUrl ? '_blank' : undefined} rel={item.data.externalUrl ? 'noopener noreferrer' : undefined}>{item.data.title}</a></h2>
+      <p>{item.data.description}</p>
+    </li>)}
+  </ul>
+  {totalPages > 1 && <nav class="news-pagination" aria-label="Страницы архива новостей">
+    {currentPage > 1 && <a class="news-pagination-direction" href={pageHref(currentPage - 1)} rel="prev">← Новее</a>}
+    <div class="news-pagination-pages">
+      {Array.from({ length: totalPages }, (_, index) => index + 1).map(page => page === currentPage
+        ? <span aria-current="page">{page}</span>
+        : <a href={pageHref(page)} aria-label={`Страница ${page}`}>{page}</a>)}
+    </div>
+    {currentPage < totalPages && <a class="news-pagination-direction" href={pageHref(currentPage + 1)} rel="next">Старее →</a>}
+  </nav>}
+</section>

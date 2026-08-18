@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';import {navigation} from '../data/navigation';
+---
+<BaseLayout title="Карта сайта" description="Карта сайта PascalABC.NET"><section class="archive-page"><h1>Карта сайта</h1><div class="sitemap-groups">{navigation.map(group=><section><h2>{group.href?<a href={group.href}>{group.label}</a>:group.label}</h2>{group.children&&<ul>{group.children.map(item=><li>{item.href?<a href={item.href} target={item.external?'_blank':undefined} rel={item.external?'noopener noreferrer':undefined}>{item.label}</a>:<span class="link-todo">{item.label} — URL ожидается</span>}</li>)}</ul>}</section>)}</div></section></BaseLayout>

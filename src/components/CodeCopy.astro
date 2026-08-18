@@ -1,0 +1,68 @@
+<script>
+  const copyWithFallback = async (text: string) => {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const field = document.createElement('textarea');
+    field.value = text;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.append(field);
+    field.select();
+    const legacyDocument = document as unknown as { execCommand(command: string): boolean };
+    const copied = legacyDocument.execCommand('copy');
+    field.remove();
+    if (!copied) throw new Error('Copy command failed');
+  };
+
+  const setupCodeCopy = () => {
+    document.querySelectorAll<HTMLPreElement>('.prose pre, .tab-content pre').forEach((pre) => {
+      if (pre.parentElement?.classList.contains('code-block')) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block';
+      pre.before(wrapper);
+      wrapper.append(pre);
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'code-copy';
+      button.title = 'Копировать';
+      button.setAttribute('aria-label', 'Копировать код');
+      button.setAttribute('aria-live', 'polite');
+      button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 19a2 2 0 0 1-1-2V2a2 2 0 0 1 1-1h13a2 2 0 0 1 2 1"/><rect x="6" y="5" width="16" height="18" rx="1.5" ry="1.5"/></svg>';
+
+      button.addEventListener('click', async () => {
+        const code = pre.querySelector('code')?.textContent ?? pre.textContent ?? '';
+        try {
+          await copyWithFallback(code);
+          button.classList.add('copied');
+          button.title = 'Скопировано';
+          button.setAttribute('aria-label', 'Код скопирован');
+          window.setTimeout(() => {
+            button.classList.remove('copied');
+            button.title = 'Копировать';
+            button.setAttribute('aria-label', 'Копировать код');
+          }, 1600);
+        } catch {
+          button.classList.add('copy-error');
+          button.title = 'Не удалось скопировать';
+          button.setAttribute('aria-label', 'Не удалось скопировать код');
+          window.setTimeout(() => {
+            button.classList.remove('copy-error');
+            button.title = 'Копировать';
+            button.setAttribute('aria-label', 'Копировать код');
+          }, 1600);
+        }
+      });
+
+      wrapper.append(button);
+    });
+  };
+
+  setupCodeCopy();
+  document.addEventListener('astro:page-load', setupCodeCopy);
+</script>

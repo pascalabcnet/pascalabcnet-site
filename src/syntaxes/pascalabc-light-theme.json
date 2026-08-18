@@ -1,0 +1,43 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "name": "PascalABC.NET Light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#F2F3F5",
+    "editor.foreground": "#403F53"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#22863A" }
+    },
+    {
+      "scope": ["keyword.control", "storage.modifier"],
+      "settings": { "foreground": "#8844AE" }
+    },
+    {
+      "scope": ["storage.type", "support.type"],
+      "settings": { "foreground": "#2E5FA3" }
+    },
+    {
+      "scope": ["keyword.operator"],
+      "settings": { "foreground": "#403F53" }
+    },
+    {
+      "scope": ["string", "constant.character.escape"],
+      "settings": { "foreground": "#984E4D" }
+    },
+    {
+      "scope": ["punctuation.definition.string"],
+      "settings": { "foreground": "#111111" }
+    },
+    {
+      "scope": ["constant.numeric"],
+      "settings": { "foreground": "#AA0982" }
+    },
+    {
+      "scope": ["entity.name.function", "entity.name.type", "support.function"],
+      "settings": { "foreground": "#403F53" }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProgramTabs from '../components/ProgramTabs.astro';
+import NewsSidebar from '../components/NewsSidebar.astro';
+import Card from '../components/Card.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import Icon from '../components/Icon.astro';
+import { externalLinks } from '../data/external-links';
+---
+<BaseLayout>
+  <div class="main-grid"><section class="content" aria-label="О PascalABC.NET">
+    <div class="description"><p><span class="brand">PascalABC.NET</span> — современный язык программирования Паскаль для платформы .NET, сочетающий простой и логичный синтаксис с возможностями профессиональной разработки. Автоопределение типов, кортежи, срезы, классы, обобщения и лямбда-выражения позволяют писать компактный, понятный и эффективный код. </p><p>PascalABC.NET — универсальный <span class="brand">мультипарадигменный</span> язык, поддерживающий процедурный, объектно-ориентированный и функциональный стили программирования. Он подходит для <span class="brand">обучения современному программированию</span>, научных исследований, разработки прикладных программ и повседневных задач.</p><p>Система программирования PascalABC.NET включает простую и мощную среду разработки с подсказками по коду, автоформатированием, средствами автоматической проверки и образцами кода для начинающих. </p></div>
+    <div class="description-cta"><a class="btn-primary" href="/ssyilki-dlya-skachivaniya"><Icon name="download" /> Скачать PascalABC.NET ...</a><ExternalLink class="btn-secondary" href={externalLinks.mlPascalABC} label="ML PascalABC.NET">ML PascalABC.NET →</ExternalLink></div>
+    <ProgramTabs />
+    <section class="cards" aria-label="Основные разделы">
+      <Card title="Скачать" description="Последняя версия для Windows, Linux, macOS." href="/ssyilki-dlya-skachivaniya" linkLabel="Скачать →" icon="download" />
+      <Card title="Документация" description="Справочник по языку и стандартным модулям." href={externalLinks.help} external linkLabel="Перейти →" icon="documentation" />
+      <Card title="VS Code" description="Расширение для Visual Studio Code." href="/vscode" linkLabel="Перейти →" icon="vscode" />
+      <Card title="Курсы на Stepik" description="Интерактивные курсы для начинающих." href="/stepik" linkLabel="Перейти →" icon="stepik" />
+      <Card title="Примеры и задачи" description="Примеры программ и олимпиадные задачи." href={externalLinks.olympiadProblems} external linkLabel="Смотреть →" icon="examples" />
+      <Card title="Сообщество" href={null} icon="community"><ul class="link-list"><li><ExternalLink href={externalLinks.telegramChannel} label="Telegram-канал" /></li><li><ExternalLink href={externalLinks.maxChannel} label="MAX-канал" /></li><li><a href={externalLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a></li></ul></Card>
+    </section>
+  </section><NewsSidebar /></div>
+</BaseLayout>

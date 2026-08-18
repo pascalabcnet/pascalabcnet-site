@@ -1,0 +1,20 @@
+{
+  "name": "pascalabc-net-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "check": "astro check",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^5.13.0",
+    "shiki": "^3.9.2",
+    "typescript": "^5.9.2"
+  }
+}

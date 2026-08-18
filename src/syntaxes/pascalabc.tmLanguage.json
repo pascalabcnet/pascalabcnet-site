@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "id": "pascalabc",
+  "name": "PascalABC.NET",
+  "scopeName": "source.pascalabc",
+  "fileTypes": ["pas"],
+  "patterns": [
+    { "include": "#comments" }, { "include": "#strings" }, { "include": "#numbers" },
+    { "match": "(?i:\\b(?:abstract|and|array|as|auto|begin|case|class|const|constructor|default|destructor|div|do|downto|else|end|event|except|extensionmethod|external|file|finalization|finally|for|foreach|forward|function|goto|if|implementation|in|index|inherited|initialization|interface|internal|is|label|lock|loop|mod|new|nil|not|of|on|operator|or|out|overload|override|params|private|procedure|program|property|protected|public|raise|read|record|reintroduce|repeat|sealed|sequence|set|shl|shr|sizeof|step|template|then|to|true|false|try|type|typeof|unit|until|uses|using|var|virtual|where|while|with|write|xor|yield)\\b)", "name": "keyword.control.pascalabc" },
+    { "match": "->|\\.\\.", "name": "keyword.operator.pascalabc" },
+    { "match": "(?<=\\.)[A-Z][A-Za-z0-9_]*|\\b[A-Z][A-Za-z0-9_]*(?=\\s*\\()", "name": "entity.name.function.pascalabc" },
+    { "match": "(?i:\\b(?:integer|real|string|boolean|char|byte|shortint|smallint|word|longword|longint|int64|uint64|cardinal|bigint|single|double|decimal|object|pointer|text|List|Dictionary|HashSet|Queue|Stack)\\b)", "name": "storage.type.pascalabc" }
+  ],
+  "repository": {
+    "comments": { "patterns": [
+      { "begin": "//", "end": "$", "name": "comment.line.double-slash.pascalabc" },
+      { "match": "^\\s*##.*$", "name": "comment.line.marker.pascalabc" },
+      { "begin": "\\{", "end": "\\}", "name": "comment.block.pascalabc" },
+      { "begin": "\\(\\*", "end": "\\*\\)", "name": "comment.block.pascalabc" }
+    ]},
+    "strings": { "patterns": [
+      { "begin": "(\\$)(')", "beginCaptures": { "2": { "name": "punctuation.definition.string.begin.pascalabc" } }, "end": "'", "endCaptures": { "0": { "name": "punctuation.definition.string.end.pascalabc" } }, "name": "string.quoted.single.interpolated.pascalabc", "patterns": [{ "begin": "\\{", "end": "\\}", "name": "meta.interpolation.pascalabc" }] },
+      { "begin": "'", "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.pascalabc" } }, "end": "'", "endCaptures": { "0": { "name": "punctuation.definition.string.end.pascalabc" } }, "name": "string.quoted.single.pascalabc", "patterns": [{ "match": "''", "name": "constant.character.escape.pascalabc" }] }
+    ]},
+    "numbers": { "patterns": [{ "match": "(?<![A-Za-z_])(?:\\d+\\.\\d+|\\d+)(?![A-Za-z_])", "name": "constant.numeric.pascalabc" }] }
+  }
+}

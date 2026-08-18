@@ -1,0 +1,14 @@
+---
+import { navigation } from '../data/navigation';
+---
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu"><span class="menu-icon" aria-hidden="true"></span><span>Меню</span></button>
+<nav aria-label="Главная навигация">
+  <ul class="nav" id="main-menu">
+    {navigation.map((group, index) => <li class:list={[group.children && 'has-submenu']}>
+      {group.children ? <><button class="nav-trigger" type="button" aria-expanded="false" aria-controls={`submenu-${index}`}>{group.label}<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button><ul class="submenu" id={`submenu-${index}`}>{group.children.map((item) => <li>{item.href ? <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>{item.label}{item.external && <span class="sr-only"> (откроется в новой вкладке)</span>}</a> : <span class="link-todo" title={`TODO: добавить адрес для «${item.label}»`}>{item.label}<small>URL ожидается</small></span>}</li>)}</ul></> : <a href={group.href}>{group.label}</a>}
+    </li>)}
+  </ul>
+</nav>
+<script>
+  const setupNavigation=()=>{const nav=document.querySelector('#main-menu');const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');if(!nav||!toggle||toggle.dataset.ready)return;toggle.dataset.ready='true';const triggers=[...nav.querySelectorAll<HTMLButtonElement>('.nav-trigger')];const closeSubmenus=(except?:HTMLButtonElement)=>triggers.forEach(button=>{if(button!==except){button.setAttribute('aria-expanded','false');button.closest('li')?.classList.remove('open')}});const closeAll=()=>{closeSubmenus();toggle.setAttribute('aria-expanded','false');nav.classList.remove('mobile-open')};toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));nav.classList.toggle('mobile-open',!open)});triggers.forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';closeSubmenus(button);button.setAttribute('aria-expanded',String(!open));button.closest('li')?.classList.toggle('open',!open)}));document.addEventListener('click',event=>{if(!(event.target as Element).closest('nav, .menu-toggle'))closeSubmenus()});document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeAll();toggle.focus()}});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeAll))};setupNavigation();document.addEventListener('astro:page-load',setupNavigation);
+</script>

@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  entries: CollectionEntry<'examples'>[];
+  currentSlug?: string;
+  previous?: CollectionEntry<'examples'>;
+  next?: CollectionEntry<'examples'>;
+}
+
+const { title, description, entries, currentSlug, previous, next } = Astro.props;
+const sortedEntries = [...entries].sort((a, b) => a.data.order - b.data.order);
+const groups = sortedEntries.reduce((result, entry) => {
+  const group = result.find((item) => item.title === entry.data.group);
+  if (group) group.entries.push(entry);
+  else result.push({ title: entry.data.group, entries: [entry] });
+  return result;
+}, [] as { title: string; entries: CollectionEntry<'examples'>[] }[]);
+const entryHref = (entry: CollectionEntry<'examples'>) => `/examples/${entry.data.slug ?? entry.id}`;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="examples-layout">
+    <aside class="examples-sidebar">
+      <details class="examples-mobile-menu">
+        <summary>Темы примеров</summary>
+        <nav aria-label="Темы примеров PascalABC.NET">
+          <a href="/examples" aria-current={!currentSlug ? 'page' : undefined}>Все темы</a>
+          {groups.map((group) => (
+            <section>
+              <h2>{group.title}</h2>
+              {group.entries.map((entry) => (
+                <a href={entryHref(entry)} aria-current={currentSlug === (entry.data.slug ?? entry.id) ? 'page' : undefined}>{entry.data.title}</a>
+              ))}
+            </section>
+          ))}
+        </nav>
+      </details>
+
+      <nav class="examples-desktop-menu" aria-label="Темы примеров PascalABC.NET">
+        <a href="/examples" aria-current={!currentSlug ? 'page' : undefined}>Все темы</a>
+        {groups.map((group) => (
+          <section>
+            <h2>{group.title}</h2>
+            {group.entries.map((entry) => (
+              <a href={entryHref(entry)} aria-current={currentSlug === (entry.data.slug ?? entry.id) ? 'page' : undefined}>{entry.data.title}</a>
+            ))}
+          </section>
+        ))}
+      </nav>
+    </aside>
+
+    <article class="examples-content page-shell">
+      <h1>{title}</h1>
+      <div class="prose"><slot /></div>
+      {(previous || next) && (
+        <nav class="examples-pager" aria-label="Переход между темами">
+          {previous ? <a class="examples-pager-prev" href={entryHref(previous)}>← {previous.data.title}</a> : <span />}
+          {next && <a class="examples-pager-next" href={entryHref(next)}>{next.data.title} →</a>}
+        </nav>
+      )}
+    </article>
+  </div>
+</BaseLayout>

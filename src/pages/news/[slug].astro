@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsArchive from '../../components/NewsArchive.astro';
+
+export async function getStaticPaths() {
+  const pageSize = 10;
+  const allItems = (await getCollection('news', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const articlePaths = allItems.filter(item => !item.data.externalUrl).map(item => ({ params: { slug: item.id }, props: { kind: 'article', item } }));
+  const totalPages = Math.ceil(allItems.length / pageSize);
+  const archivePaths = Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+    const currentPage = index + 2;
+    return {
+      params: { slug: String(currentPage) },
+      props: { kind: 'archive', items: allItems.slice((currentPage - 1) * pageSize, currentPage * pageSize), currentPage, totalPages }
+    };
+  });
+  return [...articlePaths, ...archivePaths];
+}
+
+const props = Astro.props;
+const isArchive = props.kind === 'archive';
+const item = props.item!;
+const rendered = isArchive ? undefined : await render(item);
+const Content = rendered?.Content;
+const format = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+{isArchive
+  ? <BaseLayout title={`Новости — страница ${props.currentPage}`} description="Архив новостей проекта PascalABC.NET"><NewsArchive items={props.items} currentPage={props.currentPage} totalPages={props.totalPages} /></BaseLayout>
+  : <BaseLayout title={item.data.title} description={item.data.description}><article class="page-shell"><h1>{item.data.title}</h1><time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time><div class="prose">{Content && <Content />}</div></article></BaseLayout>}

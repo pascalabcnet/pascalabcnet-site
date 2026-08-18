@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OlympiadArchiveCard from '../../components/OlympiadArchiveCard.astro';
+
+const items = (await getCollection('olympiads', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.year - a.data.year);
+---
+
+<BaseLayout
+  title="Олимпиада PascalABC.NET"
+  description="Ежегодная очная олимпиада по программированию на PascalABC.NET для школьников 8–11 классов"
+>
+  <article class="olympiad-page">
+    <header class="olympiad-intro">
+      <p class="olympiad-eyebrow">Институт математики, механики и компьютерных наук им. И.И. Воровича ЮФУ</p>
+      <h1>Олимпиада PascalABC.NET</h1>
+      <p class="olympiad-lead">Ежегодная очная олимпиада по программированию для школьников 8–11 классов. Все задачи решаются только на PascalABC.NET.</p>
+
+      <div class="olympiad-intro-copy">
+        <p>Участникам предлагаются задачи различного уровня сложности, проверяющие владение базовыми алгоритмами, структурами данных, строками, массивами, множествами, словарями и другими средствами современного программирования.</p>
+        <p>После олимпиады публикуются условия и решения задач. Архив прошлых лет можно использовать для самостоятельной подготовки и изучения возможностей PascalABC.NET.</p>
+      </div>
+
+      <aside class="olympiad-bonus" aria-label="Дополнительные баллы при поступлении">
+        <strong>10 дополнительных баллов</strong>
+        <span>получают победители и призёры из 10–11 классов при поступлении в ИММиКН ЮФУ</span>
+      </aside>
+
+      <dl class="olympiad-facts" aria-label="Основная информация об олимпиаде">
+        <div><dt>8–11</dt><dd>классы участников</dd></div>
+        <div><dt>Очно</dt><dd>формат проведения</dd></div>
+        <div><dt>Весной</dt><dd>обычно в апреле–мае</dd></div>
+        <div><dt>С 2025</dt><dd>проводится ежегодно</dd></div>
+      </dl>
+    </header>
+
+    <section class="olympiad-quick-archive" aria-labelledby="olympiad-materials-title">
+      <div>
+        <p class="olympiad-eyebrow">Учебный архив</p>
+        <h2 id="olympiad-materials-title">Задачи и решения прошлых лет</h2>
+      </div>
+      <div class="olympiad-quick-list">
+        {items.map(item => (
+          <div>
+            <strong>{item.data.year}</strong>
+            <a href={item.data.conditionsUrl} target="_blank" rel="noopener noreferrer">Условия</a>
+            <a href={item.data.solutionsUrl} download>Решения</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <aside class="olympiad-checking">
+      <div class="olympiad-checking-mark" aria-hidden="true">✓</div>
+      <div>
+        <h2>Автоматическая проверка решений</h2>
+        <p>Работы участников автоматически проверяются по тестам. Для проведения олимпиады используется собственная лёгкая система проверки заданий PascalABC.NET.</p>
+      </div>
+    </aside>
+
+    <section class="olympiad-archive" aria-labelledby="olympiad-archive-title">
+      <div class="olympiad-section-heading">
+        <div>
+          <p class="olympiad-eyebrow">2025–2026</p>
+          <h2 id="olympiad-archive-title">Архив олимпиад</h2>
+        </div>
+        <p>Новые материалы располагаются первыми. Условия открываются в PDF, решения скачиваются как архив исходных файлов `.pas`.</p>
+      </div>
+      <div class="olympiad-list">
+        {items.map(item => <OlympiadArchiveCard item={item} />)}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

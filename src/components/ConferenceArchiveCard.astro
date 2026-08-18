@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  item: CollectionEntry<'conferences'>;
+}
+
+const { item } = Astro.props;
+const data = item.data;
+const presentationBase = `https://pascalabc.net/downloads/PABCConf${data.year}/Presentations/`;
+const presentationUrl = (file: string) => `${presentationBase}${encodeURIComponent(file)}`;
+---
+
+<article id={`conference-${data.year}`} class:list={['conference-card', { 'conference-card-featured': data.featured }]}>
+  <div class="conference-year" aria-hidden="true">{data.year}</div>
+  <div class="conference-card-body">
+    <header class="conference-card-header">
+      <div>
+        {data.featured && <span class="conference-current">Последняя проведённая</span>}
+        <h3>{data.ordinal}</h3>
+        <p class="conference-series-name">«Использование системы программирования PascalABC.NET в обучении программированию»</p>
+      </div>
+      <dl class="conference-meta">
+        <div><dt class="sr-only">Даты</dt><dd>{data.date}</dd></div>
+        <div><dt class="sr-only">Формат</dt><dd>{data.format}</dd></div>
+      </dl>
+    </header>
+
+    <p class="conference-description">{data.description}</p>
+    {data.location && <p class="conference-location">Место проведения: {data.location}</p>}
+    {data.attendance && <p class="conference-attendance">{data.attendance}</p>}
+
+    <div class="conference-primary-links">
+      {data.programUrl && <a href={data.programUrl} target="_blank" rel="noopener noreferrer">Программа конференции <span aria-hidden="true">→</span></a>}
+      {data.infoLetterUrl && <a href={data.infoLetterUrl} target="_blank" rel="noopener noreferrer">Информационное письмо <span aria-hidden="true">→</span></a>}
+    </div>
+
+    <div class="conference-materials">
+      {data.videos.length > 0 && (
+        <details>
+          <summary>Видеозаписи <span class="conference-count">{data.videos.length}</span></summary>
+          <ul class="conference-link-list">
+            {data.videos.map(video => (
+              <li><a href={video.url} target="_blank" rel="noopener noreferrer">{video.label}</a><span>{video.platform}</span></li>
+            ))}
+          </ul>
+        </details>
+      )}
+
+      {data.presentations.length > 0 && (
+        <details>
+          <summary>Презентации докладов <span class="conference-count">{data.presentations.length}</span></summary>
+          <ol class="presentation-list">
+            {data.presentations.map(presentation => (
+              <li>
+                <div><strong>{presentation.author}</strong> {presentation.title}</div>
+                <div class="presentation-files">
+                  {presentation.files.map(file => (
+                    <a href={presentationUrl(file.file)} target="_blank" rel="noopener noreferrer">{file.label}</a>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </details>
+      )}
+    </div>
+
+    {data.archiveNote && <p class="conference-archive-note">{data.archiveNote}</p>}
+  </div>
+</article>
+
