@@ -22,3 +22,14 @@ import { externalLinks } from '../data/external-links';
     </section>
   </section><NewsSidebar /></div>
 </BaseLayout>
+<script is:inline>
+  (() => {
+    if (location.pathname !== '/') return;
+    let saved = null;
+    try { saved = localStorage.getItem('pabc_locale'); } catch {}
+    if (saved === 'en') { location.replace('/en/'); return; }
+    if (saved === 'ru') return;
+    const language = (navigator.languages?.[0] || navigator.language || '').toLowerCase();
+    if (!language.startsWith('ru')) location.replace('/en/');
+  })();
+</script>

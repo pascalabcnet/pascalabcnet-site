@@ -3,7 +3,7 @@
 ##
 'ОДЕКОЛОН'
   .Permutations
-  .Where(s -> not s.IsMatch('ОО|ЕЕ|ДД|КК|ЛЛ|НН'))
+  .Where(s -> not s.IsMatch('(.)\1'))
   .Distinct
   .Count
   .Print

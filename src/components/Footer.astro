@@ -1,5 +1,8 @@
 ---
 import { externalLinks } from '../data/external-links';
 import MailRuCounter from './MailRuCounter.astro';
+import { ui, type Locale } from '../i18n/ui';
+interface Props { locale?: Locale }
+const { locale = 'ru' } = Astro.props;
 ---
-<footer class="footer"><span>© 2007–2026 PascalABC.NET · Южный федеральный университет</span><div class="footer-actions"><nav class="footer-links" aria-label="Дополнительная навигация"><a href="/license">Лицензия</a><a href="/contacts">Контакты</a><a href={externalLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href="/sitemap">Карта сайта</a></nav><MailRuCounter /></div></footer>
+<footer class="footer"><span>{ui[locale].footer}</span><div class="footer-actions"><nav class="footer-links" aria-label={locale === 'en' ? 'Additional navigation' : 'Дополнительная навигация'}>{locale === 'en' ? <><a href="/en/license/">License Agreement</a><a href={externalLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a></> : <><a href="/license">Лицензия</a><a href="/contacts">Контакты</a><a href={externalLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href="/sitemap">Карта сайта</a></>} </nav><MailRuCounter /></div></footer>

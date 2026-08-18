@@ -1,6 +1,7 @@
 export const externalLinks = {
   help: 'https://pascalabc.net/downloads/pabcnethelp/index.htm',
   yMinutes: 'https://pascalabc.miraheze.org/wiki/Learn_PascalABC.NET_in_Y_minutes',
+  yMinutesEnglish: 'https://pascalabc.miraheze.org/wiki/Learn_PascalABC.NET_in_Y_minutes_English',
   github: 'https://github.com/pascalabcnet/pascalabcnet',
   ege: 'https://pascalabcnet.github.io/mydoc_for_EGE.html',
   articlesAndExamples: 'https://pascalabcnet.github.io/',

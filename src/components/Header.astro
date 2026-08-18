@@ -1,4 +1,9 @@
 ---
 import Navigation from './Navigation.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
+import { ui, type Locale } from '../i18n/ui';
+interface Props { locale?: Locale; pathname: string }
+const { locale = 'ru', pathname } = Astro.props;
+const text = ui[locale];
 ---
-<header class="site-header"><a class="logo-wrapper" href="/" aria-label="PascalABC.NET — главная"><span class="logo">Pascal<span class="logo-a">A</span><span class="logo-b">B</span><span class="logo-c">C</span>.NET</span><span class="logo-subtitle">Современное программирование на языке Паскаль</span></a><Navigation /></header>
+<header class="site-header"><a class="logo-wrapper" href={locale === 'en' ? '/en/' : '/'} aria-label={text.homeLabel}><span class="logo">Pascal<span class="logo-a">A</span><span class="logo-b">B</span><span class="logo-c">C</span>.NET</span><span class="logo-subtitle">{text.subtitle}</span></a><Navigation locale={locale} /><LanguageSwitch locale={locale} pathname={pathname} /></header>

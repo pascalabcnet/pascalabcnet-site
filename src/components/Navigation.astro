@@ -1,11 +1,17 @@
 ---
 import { navigation } from '../data/navigation';
+import { navigationEn } from '../data/navigation-en';
+import { ui, type Locale } from '../i18n/ui';
+interface Props { locale?: Locale }
+const { locale = 'ru' } = Astro.props;
+const items = locale === 'en' ? navigationEn : navigation;
+const text = ui[locale];
 ---
-<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu"><span class="menu-icon" aria-hidden="true"></span><span>Меню</span></button>
-<nav aria-label="Главная навигация">
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu"><span class="menu-icon" aria-hidden="true"></span><span>{text.menu}</span></button>
+<nav class="main-navigation" aria-label={text.navigation}>
   <ul class="nav" id="main-menu">
-    {navigation.map((group, index) => <li class:list={[group.children && 'has-submenu']}>
-      {group.children ? <><button class="nav-trigger" type="button" aria-expanded="false" aria-controls={`submenu-${index}`}>{group.label}<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button><ul class="submenu" id={`submenu-${index}`}>{group.children.map((item) => <li>{item.href ? <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>{item.label}{item.external && <span class="sr-only"> (откроется в новой вкладке)</span>}</a> : <span class="link-todo" title={`TODO: добавить адрес для «${item.label}»`}>{item.label}<small>URL ожидается</small></span>}</li>)}</ul></> : <a href={group.href}>{group.label}</a>}
+    {items.map((group, index) => <li class:list={[group.children && 'has-submenu']}>
+      {group.children ? <><button class="nav-trigger" type="button" aria-expanded="false" aria-controls={`submenu-${index}`}>{group.label}<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button><ul class="submenu" id={`submenu-${index}`}>{group.children.map((item) => <li>{item.href ? <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>{item.label}{item.external && <span class="sr-only"> ({text.external})</span>}</a> : null}</li>)}</ul></> : <a href={group.href}>{group.label}</a>}
     </li>)}
   </ul>
 </nav>

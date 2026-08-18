@@ -8,19 +8,29 @@ const pages = defineCollection({
     description: z.string(),
     slug: z.string().optional(),
     draft: z.boolean().default(false),
-    order: z.number().optional()
+    order: z.number().optional(),
+    translationStatus: z.enum(['pending', 'translated']).optional(),
+    source: z.string().optional()
   })
 });
 
-const news = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
-  schema: z.object({
+const newsSchema = z.object({
     title: z.string(),
     date: z.coerce.date(),
     description: z.string(),
     externalUrl: z.string().url().optional(),
-    draft: z.boolean().default(false)
-  })
+    draft: z.boolean().default(false),
+    translationStatus: z.enum(['pending', 'translated']).optional()
+});
+
+const news = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
+  schema: newsSchema
+});
+
+const newsEn = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news-en' }),
+  schema: newsSchema
 });
 
 const conferenceSchema = z.object({
@@ -90,4 +100,4 @@ const examples = defineCollection({
   })
 });
 
-export const collections = { pages, news, conferences, olympiads, examples };
+export const collections = { pages, news, newsEn, conferences, olympiads, examples };
