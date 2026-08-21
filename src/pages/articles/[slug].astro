@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('articles', ({ data }) => !data.draft);
+  return items.map(item => ({ params: { slug: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const format = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: item.data.title,
+  description: item.data.description,
+  ...(item.data.date ? { datePublished: item.data.date.toISOString() } : {}),
+  publisher: { '@type': 'Organization', name: 'PascalABC.NET', url: 'https://pascalabc.net/' },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href
+};
+---
+<BaseLayout title={item.data.title} description={item.data.description}>
+  <article class="article-page page-shell">
+    <p class="article-back"><a href="/articles/">← Все статьи</a></p>
+    <h1>{item.data.title}</h1>
+    <div class="article-meta article-page-meta">
+      {item.data.date
+        ? <time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time>
+        : <span class="article-date-missing">Дата публикации уточняется</span>}
+      <span>{item.data.category}</span>
+    </div>
+    <div class="prose"><Content /></div>
+  </article>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+</BaseLayout>

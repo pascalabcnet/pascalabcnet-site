@@ -1,0 +1,52 @@
+---
+const { items, draftItems = [], currentPage = 1, totalPages = 1 } = Astro.props;
+const format = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+const pageHref = (page: number) => page === 1 ? '/articles/' : `/articles/page/${page}/`;
+---
+<section class="articles-page">
+  <header class="articles-header">
+    <h1>Статьи</h1>
+    <p>Авторские материалы о языке PascalABC.NET, обучении программированию, библиотеках и инструментах проекта.</p>
+  </header>
+
+  {items.length > 0
+    ? <ol class="article-list">
+        {items.map((item: any) => <li>
+          <article>
+            <h2><a href={`/articles/${item.id}/`}>{item.data.title}</a></h2>
+            <div class="article-meta">
+              {item.data.date
+                ? <time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time>
+                : <span class="article-date-missing">Дата публикации уточняется</span>}
+              <span>{item.data.category}</span>
+            </div>
+            <p>{item.data.description}</p>
+          </article>
+        </li>)}
+      </ol>
+    : draftItems.length === 0 && <p class="article-empty">Опубликованных статей пока нет.</p>}
+
+  {draftItems.length > 0 && <section class="article-drafts" aria-labelledby="articles-in-preparation">
+    <h2 id="articles-in-preparation">Готовятся к публикации</h2>
+    <ul>
+      {draftItems.map((item: any) => <li>
+        <strong>{item.data.title}</strong>
+        <span>{item.data.category}</span>
+      </li>)}
+    </ul>
+  </section>}
+
+  {totalPages > 1 && <nav class="news-pagination" aria-label="Страницы архива статей">
+    <div class="news-pagination-side news-pagination-side-left">
+      {currentPage > 1 && <a class="news-pagination-direction" href={pageHref(currentPage - 1)} rel="prev">← Более новые</a>}
+    </div>
+    <div class="news-pagination-pages">
+      {Array.from({ length: totalPages }, (_, index) => index + 1).map(page => page === currentPage
+        ? <span aria-current="page">{page}</span>
+        : <a href={pageHref(page)} aria-label={`Страница ${page}`}>{page}</a>)}
+    </div>
+    <div class="news-pagination-side news-pagination-side-right">
+      {currentPage < totalPages && <a class="news-pagination-direction" href={pageHref(currentPage + 1)} rel="next">Более ранние →</a>}
+    </div>
+  </nav>}
+</section>

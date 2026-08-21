@@ -1,0 +1,16 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('newsEn', ({ data }) => !data.draft && !data.externalUrl);
+  return items.map(item => ({ params: { slug: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const format = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout locale="en" title={item.data.title} description={item.data.description}>
+  <article class="page-shell"><h1>{item.data.title}</h1><time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time><div class="prose"><Content /></div></article>
+</BaseLayout>

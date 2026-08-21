@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleArchive from '../../../components/ArticleArchive.astro';
+
+export async function getStaticPaths() {
+  const pageSize = 8;
+  const allItems = (await getCollection('articles', ({ data }) => !data.draft))
+    .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+  const totalPages = Math.ceil(allItems.length / pageSize);
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+    const currentPage = index + 2;
+    return {
+      params: { page: String(currentPage) },
+      props: {
+        items: allItems.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+        currentPage,
+        totalPages
+      }
+    };
+  });
+}
+
+const { items, currentPage, totalPages } = Astro.props;
+---
+<BaseLayout title={`Статьи — страница ${currentPage}`} description="Архив авторских статей о PascalABC.NET">
+  <ArticleArchive items={items} currentPage={currentPage} totalPages={totalPages} />
+</BaseLayout>

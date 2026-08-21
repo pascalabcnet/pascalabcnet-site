@@ -1,0 +1,21 @@
+---
+import { localeRoute } from '../i18n/routes';
+import { ui, type Locale } from '../i18n/ui';
+interface Props { locale?: Locale; pathname: string }
+const { locale = 'ru', pathname } = Astro.props;
+const otherHref = localeRoute(pathname, locale);
+---
+<nav class="language-switch" aria-label={ui[locale].language}>
+  {locale === 'ru' ? <span aria-current="page">RU</span> : <a href={otherHref} data-locale="ru">RU</a>}
+  <span aria-hidden="true">|</span>
+  {locale === 'en' ? <span aria-current="page">EN</span> : <a href={otherHref} data-locale="en">EN</a>}
+</nav>
+<script>
+  const setupLocaleSwitch = () => document.querySelectorAll<HTMLAnchorElement>('.language-switch a[data-locale]').forEach(link => {
+    if (link.dataset.ready) return;
+    link.dataset.ready = 'true';
+    link.addEventListener('click', () => { try { localStorage.setItem('pabc_locale', link.dataset.locale!); } catch {} });
+  });
+  setupLocaleSwitch();
+  document.addEventListener('astro:page-load', setupLocaleSwitch);
+</script>

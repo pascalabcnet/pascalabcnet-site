@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleArchive from '../../components/ArticleArchive.astro';
+
+const pageSize = 8;
+const collection = await getCollection('articles');
+const allItems = collection.filter(({ data }) => !data.draft)
+  .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+const draftItems = collection.filter(({ data }) => data.draft)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'ru'));
+const totalPages = Math.max(1, Math.ceil(allItems.length / pageSize));
+---
+<BaseLayout title="Статьи" description="Авторские статьи о PascalABC.NET и обучении программированию">
+  <ArticleArchive items={allItems.slice(0, pageSize)} draftItems={draftItems} currentPage={1} totalPages={totalPages} />
+</BaseLayout>

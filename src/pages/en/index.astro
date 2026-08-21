@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramTabs from '../../components/ProgramTabs.astro';
+import NewsSidebar from '../../components/NewsSidebar.astro';
+import Card from '../../components/Card.astro';
+import ExternalLink from '../../components/ExternalLink.astro';
+import Icon from '../../components/Icon.astro';
+import { externalLinks } from '../../data/external-links';
+---
+<BaseLayout locale="en" title="PascalABC.NET" description="A modern Pascal programming language for .NET.">
+  <div class="main-grid"><section class="content" aria-label="About PascalABC.NET">
+    <div class="description"><p><span class="brand">PascalABC.NET</span> is a modern Pascal programming language for .NET, combining clear and logical syntax with professional development capabilities. Type inference, tuples, slices, classes, generics, and lambda expressions make programs concise, readable, and efficient.</p><p>PascalABC.NET is a universal <span class="brand">multi-paradigm</span> language supporting procedural, object-oriented, and functional programming. It is suitable for <span class="brand">learning modern programming</span>, scientific research, application development, and everyday tasks.</p><p>The PascalABC.NET programming system includes a simple and powerful development environment with code completion, automatic formatting, automated assessment tools, and examples for beginners.</p></div>
+    <div class="description-cta"><a class="btn-primary" href="/en/downloads/"><Icon name="download" /> Download PascalABC.NET ...</a><ExternalLink class="btn-secondary" href={externalLinks.mlPascalABC} label="ML PascalABC.NET">ML PascalABC.NET →</ExternalLink></div>
+    <ProgramTabs locale="en" />
+    <section class="cards cards-four" aria-label="Main sections">
+      <Card title="Download" description="The latest versions for Windows and .NET 10." href="/en/downloads/" linkLabel="Download →" icon="download" />
+      <Card title="Documentation" description="A concise introduction to PascalABC.NET." href={externalLinks.yMinutesEnglish} external linkLabel="Open →" icon="documentation" />
+      <Card title="VS Code" description="The PascalABC.NET extension for Visual Studio Code." href="/en/vscode/" linkLabel="Open →" icon="vscode" />
+      <Card title="Community" href={null} icon="community"><ul class="link-list"><li><ExternalLink href={externalLinks.telegramChannel} label="Telegram channel" /></li><li><ExternalLink href={externalLinks.telegramGroup} label="Telegram group" /></li><li><a href={externalLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a></li></ul></Card>
+    </section>
+  </section><NewsSidebar locale="en" limit={3} excludeOlympiads /></div>
+</BaseLayout>
