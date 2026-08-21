@@ -39,7 +39,7 @@ Choose the PascalABC.NET option that best suits your needs. For the familiar ful
     <h3>Console Compiler</h3>
     <p>PascalABC.NET compiler for command-line use. Download the archive and extract it.</p>
     <div class="download-commands" aria-label="Compilation and execution example">
-      <code>pabcnetc.exe a.pas</code>
+      <code>dotnet pabcnetc.dll a.pas</code>
       <span>creates <code>a.exe</code></span>
       <code>dotnet a.exe</code>
     </div>

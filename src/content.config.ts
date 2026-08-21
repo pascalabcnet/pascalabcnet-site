@@ -100,4 +100,17 @@ const examples = defineCollection({
   })
 });
 
-export const collections = { pages, news, newsEn, conferences, olympiads, examples };
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date().optional(),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    legacyUrls: z.array(z.string()).default([]),
+    draft: z.boolean().default(false)
+  })
+});
+
+export const collections = { pages, news, newsEn, conferences, olympiads, examples, articles };

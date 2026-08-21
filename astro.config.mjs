@@ -10,7 +10,11 @@ export default defineConfig({
     defaultLocale: 'ru',
     routing: { prefixDefaultLocale: false }
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => page !== 'https://pascalabc.net/downloads/'
+    })
+  ],
   markdown: {
     shikiConfig: pascalabcShikiConfig
   }

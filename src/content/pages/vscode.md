@@ -36,6 +36,10 @@ slug: vscode
 - компиляцию и запуск программ;
 - выбор целевой платформы **.NET Framework 4.7.2 или .NET 10**.
 
+Средства **IntelliSense**, включая подсказки по коду, сведения о типах, Signature Help и отображение ошибок, работают как в Windows, так и в Linux.
+
+> **Linux:** компиляция и запуск программ доступны только для целевой платформы **.NET 10**. Target **.NET Framework 4.7.2** поддерживается только в Windows.
+
 <div class="vscode-interface-notes">
   <figure>
     <img class="vscode-editor-actions" src="/images/vscode/editor-actions.png" alt="Кнопки запуска, компиляции, создания, открытия и сохранения файла" width="287" height="57" loading="lazy">

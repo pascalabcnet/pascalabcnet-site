@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-export async function getStaticPaths(){const pages=await getCollection('pages',({data})=>!data.draft);return pages.map(page=>({params:{slug:page.data.slug??page.id},props:{page}}));}
+export async function getStaticPaths(){const pages=await getCollection('pages',({data})=>!data.draft&&data.slug!=='downloads');return pages.map(page=>({params:{slug:page.data.slug??page.id},props:{page}}));}
 const {page}=Astro.props;const pageSlug=page.data.slug??page.id;const locale=pageSlug.startsWith('en/')?'en':'ru';const contentPage=page.data.source?(await getCollection('pages')).find(item=>(item.data.slug??item.id)===page.data.source):page;if(!contentPage)throw new Error(`Content source not found: ${page.data.source}`);const {Content}=await render(contentPage);const styleSlug=pageSlug.replace(/^en\//,'');
 ---
 <BaseLayout title={page.data.title} description={page.data.description} locale={locale}><article class:list={['page-shell',{'stepik-page':styleSlug==='stepik','book-catalog-page':styleSlug==='books','book-author-page':styleSlug==='modernprogramming'||styleSlug==='rubantsevbooks','developers-page':styleSlug==='developers','release-page':styleSlug.startsWith('whats-new/'),'whats-new-index':styleSlug==='whats-new','release-archive-page':styleSlug==='whats-new/archive','vscode-page':styleSlug==='vscode','download-page':styleSlug==='ssyilki-dlya-skachivaniya'||styleSlug==='downloads','publications-page':styleSlug==='publications'||styleSlug==='publications/archive'}]}><h1>{page.data.title}</h1><div class="prose"><Content /></div></article></BaseLayout>

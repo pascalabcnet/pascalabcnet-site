@@ -8,7 +8,7 @@ translationStatus: translated
 **Latest version:**
 
 <div class="release-index">
-  <article><p class="release-line"><strong>PascalABC.NET 4.0</strong></p><p class="release-link"><a href="/en/whats-new/4.0/">Read about the changes.</a></p></article>
+  <article><p class="release-line"><strong>PascalABC.NET 4.0</strong></p><p class="release-link"><a href="/en/whats-new/pascalabcnet-4.0/">Read about the changes.</a></p></article>
   <article><p class="release-line">[06.02.26] <strong>Version 3.11.1.3746</strong></p><p class="release-link"><a href="https://pascalabcnet.github.io/mydoc_release_notes_3_11_1.html" target="_blank" rel="noopener noreferrer">Read about the changes.</a></p></article>
   <article><p class="release-line">[01.10.25] <strong>Version 3.11.0.3662</strong></p><p class="release-link"><a href="https://pascalabcnet.github.io/mydoc_release_notes_3_11_0.html" target="_blank" rel="noopener noreferrer">Read about the changes.</a></p></article>
   <article><p class="release-line">[27.08.24] <strong>Version 3.10.0.3533</strong></p><p class="release-link"><a href="https://pascalabcnet.github.io/mydoc_release_notes_3_10_0.html" target="_blank" rel="noopener noreferrer">Read about the changes.</a></p></article>

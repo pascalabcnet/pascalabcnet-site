@@ -17,7 +17,7 @@ export const navigation: NavigationGroup[] = [
   { label: 'Документация', children: [
     external('Справочник по языку', 'help'), external('PascalABC.NET in Y minutes', 'yMinutes'),
     { label: 'Примеры кода', href: '/examples' }, { label: 'Скриншоты', href: '/screenshots' },
-    external('Статьи', 'articlesAndExamples'), external('Wiki', 'wiki')
+    { label: 'Статьи', href: '/articles' }, external('Wiki', 'wiki')
   ]},
   { label: 'Обучение', children: [
     external('Библиотека ML PascalABC.NET', 'mlPascalABC'),

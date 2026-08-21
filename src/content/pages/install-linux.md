@@ -12,7 +12,7 @@ description: "Выбор способа установки PascalABC.NET в Linu
   </a>
   <a class="install-option" href="/install-linux-dotnet">
     <strong>Версия для .NET 10</strong>
-    <span>Инструкция появится после проверки установки.</span>
+    <span>Visual Studio Code с IntelliSense или консольный компилятор.</span>
   </a>
 </div>
 

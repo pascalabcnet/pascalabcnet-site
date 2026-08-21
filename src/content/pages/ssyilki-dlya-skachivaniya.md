@@ -38,7 +38,7 @@ slug: ssyilki-dlya-skachivaniya
     <h3>Консольный компилятор</h3>
     <p>Компилятор PascalABC.NET для работы из командной строки. Скачайте архив и распакуйте его.</p>
     <div class="download-commands" aria-label="Пример компиляции и запуска">
-      <code>pabcnetc.exe a.pas</code>
+      <code>dotnet pabcnetc.dll a.pas</code>
       <span>создаётся <code>a.exe</code></span>
       <code>dotnet a.exe</code>
     </div>
