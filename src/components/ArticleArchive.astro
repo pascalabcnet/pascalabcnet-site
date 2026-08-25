@@ -13,7 +13,7 @@ const pageHref = (page: number) => page === 1 ? '/articles/' : `/articles/page/$
     ? <ol class="article-list">
         {items.map((item: any) => <li>
           <article>
-            <h2><a href={`/articles/${item.id}/`}>{item.data.title}</a></h2>
+            <h2><a href={`/articles/${item.id}/`}>{item.data.displayTitle ?? item.data.title}</a></h2>
             <div class="article-meta">
               {item.data.date
                 ? <time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time>
@@ -30,7 +30,7 @@ const pageHref = (page: number) => page === 1 ? '/articles/' : `/articles/page/$
     <h2 id="articles-in-preparation">Готовятся к публикации</h2>
     <ul>
       {draftItems.map((item: any) => <li>
-        <strong>{item.data.title}</strong>
+        <strong>{item.data.displayTitle ?? item.data.title}</strong>
         <span>{item.data.category}</span>
       </li>)}
     </ul>

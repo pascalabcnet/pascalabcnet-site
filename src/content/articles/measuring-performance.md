@@ -1,5 +1,6 @@
 ---
-title: Меряем производительность
+title: "Производительность PascalABC.NET, C#, C++ и Free Pascal"
+displayTitle: Меряем производительность
 description: "Сравнение производительности PascalABC.NET, C#, C++ и Free Pascal на примере умножения матриц и оптимизации работы с кешем и OpenMP."
 category: Язык PascalABC.NET
 tags: 
@@ -353,4 +354,3 @@ int _tmain(int argc, _TCHAR* argv[])
 | 1200 | 4,46 |             2,8 |
 | 1300 |  7,1 |             3,5 |
 | 1400 |  8,5 |             4,4 |
-

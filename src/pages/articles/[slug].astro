@@ -13,7 +13,7 @@ const format = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long',
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: item.data.title,
+  headline: item.data.displayTitle ?? item.data.title,
   description: item.data.description,
   ...(item.data.date ? { datePublished: item.data.date.toISOString() } : {}),
   publisher: { '@type': 'Organization', name: 'PascalABC.NET', url: 'https://pascalabc.net/' },
@@ -23,7 +23,7 @@ const articleSchema = {
 <BaseLayout title={item.data.title} description={item.data.description}>
   <article class="article-page page-shell">
     <p class="article-back"><a href="/articles/">← Все статьи</a></p>
-    <h1>{item.data.title}</h1>
+    {item.data.displayTitle && <h1>{item.data.displayTitle}</h1>}
     <div class="article-meta article-page-meta">
       {item.data.date
         ? <time datetime={item.data.date.toISOString()}>{format.format(item.data.date)}</time>

@@ -6,4 +6,4 @@ interface Props { locale?: Locale; pathname: string }
 const { locale = 'ru', pathname } = Astro.props;
 const text = ui[locale];
 ---
-<header class="site-header"><a class="logo-wrapper" href={locale === 'en' ? '/en/' : '/'} aria-label={text.homeLabel}><span class="logo">Pascal<span class="logo-a">A</span><span class="logo-b">B</span><span class="logo-c">C</span>.NET</span><span class="logo-subtitle">{text.subtitle}</span></a><Navigation locale={locale} /><LanguageSwitch locale={locale} pathname={pathname} /></header>
+<header class="site-header"><div class="brand-block"><a class="logo-wrapper" href={locale === 'en' ? '/en/' : '/'} aria-label={text.homeLabel}><span class="logo">Pascal<span class="logo-a">A</span><span class="logo-b">B</span><span class="logo-c">C</span>.NET</span></a><span class="logo-subtitle">{locale === 'ru' ? <>Современное программирование<br class="mobile-subtitle-break" /> на языке Паскаль</> : text.subtitle}</span></div><Navigation locale={locale} /><LanguageSwitch locale={locale} pathname={pathname} /></header>

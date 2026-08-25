@@ -104,6 +104,7 @@ const articles = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
   schema: z.object({
     title: z.string(),
+    displayTitle: z.string().optional(),
     description: z.string(),
     date: z.coerce.date().optional(),
     category: z.string(),
