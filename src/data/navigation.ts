@@ -1,4 +1,5 @@
 import { externalLinks, type ExternalLinkKey } from './external-links';
+import { guideUI } from '../i18n/language-guide';
 
 type InternalItem = { label: string; href: string; external?: false };
 type ExternalItem = { label: string; href: string | null; external: true; key: ExternalLinkKey };
@@ -15,6 +16,7 @@ export const navigation: NavigationGroup[] = [
     { label: 'Установка на macOS', href: '/install-macos' }
   ]},
   { label: 'Документация', children: [
+    ...(import.meta.env.DEV ? [{ label: guideUI.ru.devMenu, href: '/language-guide/' }] : []),
     external('Справочник по языку', 'help'), external('PascalABC.NET in Y minutes', 'yMinutes'),
     { label: 'Примеры кода', href: '/examples' }, { label: 'Скриншоты', href: '/screenshots' },
     { label: 'Статьи', href: '/articles' }, external('Wiki', 'wiki')
@@ -30,7 +32,7 @@ export const navigation: NavigationGroup[] = [
     external('MAX-канал', 'maxChannel'), external('MAX-группа', 'maxGroup')
   ]},
   { label: 'О проекте', children: [
-    { label: 'Разработчики', href: '/developers' }, { label: 'Что нового', href: '/whats-new' },
+    { label: 'О PascalABC.NET', href: '/about' }, { label: 'Разработчики', href: '/developers' }, { label: 'Что нового', href: '/whats-new' },
     { label: 'Конференции', href: '/conferences' }, { label: 'Доклады и публикации', href: '/publications' },
     external('GitHub', 'github'), { label: 'Лицензионное соглашение', href: '/license' }
   ]}

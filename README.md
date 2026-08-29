@@ -25,6 +25,14 @@ The production build is generated in `dist/`.
 
 The contents of `dist/` are fully static and do not require Node.js on the web server.
 
+### Language Guide (development only)
+
+Run `npm run dev` and open `/language-guide/`, or use **Documentation → Language Guide (new)**.
+The experimental Markdown corpus is in `src/content/language-guide-next/`.
+Its routes, content and menu item are excluded from `astro build`; the existing documentation is unchanged.
+
+Architecture, metadata, navigation and verification commands: [Language Guide architecture](docs/language-guide-next-architecture.md).
+
 ## Project structure
 
 * `src/data/navigation.ts` — main navigation.

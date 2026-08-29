@@ -6,19 +6,24 @@
   "fileTypes": ["pas"],
   "patterns": [
     { "include": "#comments" }, { "include": "#strings" }, { "include": "#numbers" },
-    { "match": "(?i:\\b(?:abstract|and|array|as|auto|begin|case|class|const|constructor|default|destructor|div|do|downto|else|end|event|except|extensionmethod|external|file|finalization|finally|for|foreach|forward|function|goto|if|implementation|in|index|inherited|initialization|interface|internal|is|label|lock|loop|mod|new|nil|not|of|on|operator|or|out|overload|override|params|private|procedure|program|property|protected|public|raise|read|record|reintroduce|repeat|sealed|sequence|set|shl|shr|sizeof|step|template|then|to|true|false|try|type|typeof|unit|until|uses|using|var|virtual|where|while|with|write|xor|yield)\\b)", "name": "keyword.control.pascalabc" },
+    { "match": "(?i:\\b(?:self|result|value|true|false|nil)\\b)", "name": "support.variable.language.pascalabc" },
+    { "match": "(?i:\\b(?:boolean|byte|shortint|smallint|word|integer|BigInteger|Complex|longword|uint64|cardinal|int64|single|longint|string|faststring|char|real|double|pointer|object|decimal|bigint|text|List|Dictionary|HashSet|Queue|Stack)\\b)", "name": "storage.type.pascalabc" },
+    { "match": "(?i:\\b(?:raise|goto|break|exit|continue)\\b)", "name": "keyword.control.flow.pascalabc" },
+    { "match": "(?i:\\b(?:abstract|and|array|as|async|asyncparam|auto|await|begin|case|class|const|constructor|default|destructor|div|do|downto|else|end|event|except|explicit|extensionmethod|external|file|finalization|finally|for|foreach|forward|function|if|implementation|implicit|in|index|inherited|initialization|interface|internal|is|label|library|lock|loop|match|mod|namespace|new|of|on|operator|or|out|overload|override|params|partial|private|procedure|program|property|protected|public|read|record|reintroduce|repeat|sealed|sequence|set|shl|shr|sizeof|static|step|template|then|to|try|type|typeof|unit|until|uses|using|var|virtual|when|where|while|with|write|xor|yield)\\b)", "name": "keyword.control.pascalabc" },
     { "match": "->|\\.\\.", "name": "keyword.operator.pascalabc" },
-    { "match": "(?<=\\.)[A-Z][A-Za-z0-9_]*|\\b[A-Z][A-Za-z0-9_]*(?=\\s*\\()", "name": "entity.name.function.pascalabc" },
-    { "match": "(?i:\\b(?:integer|real|string|boolean|char|byte|shortint|smallint|word|longword|longint|int64|uint64|cardinal|bigint|single|double|decimal|object|pointer|text|List|Dictionary|HashSet|Queue|Stack)\\b)", "name": "storage.type.pascalabc" }
+    { "match": "(?<=\\.)[A-Z][A-Za-z0-9_]*|\\b[A-Z][A-Za-z0-9_]*(?=\\s*\\()", "name": "entity.name.function.pascalabc" }
   ],
   "repository": {
     "comments": { "patterns": [
+      { "begin": "///", "end": "$", "name": "comment.line.documentation.pascalabc" },
       { "begin": "//", "end": "$", "name": "comment.line.double-slash.pascalabc" },
       { "match": "^\\s*##.*$", "name": "comment.line.marker.pascalabc" },
+      { "begin": "\\{\\$", "end": "\\}", "name": "comment.block.directive.pascalabc" },
       { "begin": "\\{", "end": "\\}", "name": "comment.block.pascalabc" },
       { "begin": "\\(\\*", "end": "\\*\\)", "name": "comment.block.pascalabc" }
     ]},
     "strings": { "patterns": [
+      { "begin": "'''", "end": "'''", "name": "string.quoted.multiline.pascalabc" },
       { "begin": "(\\$)(')", "beginCaptures": { "2": { "name": "punctuation.definition.string.begin.pascalabc" } }, "end": "'", "endCaptures": { "0": { "name": "punctuation.definition.string.end.pascalabc" } }, "name": "string.quoted.single.interpolated.pascalabc", "patterns": [{ "begin": "\\{", "end": "\\}", "name": "meta.interpolation.pascalabc" }] },
       { "begin": "'", "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.pascalabc" } }, "end": "'", "endCaptures": { "0": { "name": "punctuation.definition.string.end.pascalabc" } }, "name": "string.quoted.single.pascalabc", "patterns": [{ "match": "''", "name": "constant.character.escape.pascalabc" }] }
     ]},

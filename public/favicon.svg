@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
-  <title>PascalABC.NET favicon</title>
-  <rect x="0" y="0" width="320" height="320" rx="36" fill="#fafaf8"/>
+  <title>PascalABC.NET app icon</title>
+  <rect x="0" y="0" width="320" height="320" rx="56" fill="#fafaf8"/>
 
-  <rect x="12" y="12" width="144" height="144" rx="16" fill="#17317A"/>
-  <text x="84" y="135" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="146" fill="#ffffff">A</text>
+  <rect x="50" y="50" width="106" height="106" rx="12" fill="#17317A"/>
+  <text x="103" y="141" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="108" fill="#ffffff">A</text>
 
-  <rect x="164" y="12" width="144" height="144" rx="16" fill="#1C7A2E"/>
-  <text x="236" y="135" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="146" fill="#ffffff">B</text>
+  <rect x="164" y="50" width="106" height="106" rx="12" fill="#1C7A2E"/>
+  <text x="217" y="141" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="108" fill="#ffffff">B</text>
 
-  <rect x="12" y="164" width="144" height="144" rx="16" fill="#C81E1E"/>
-  <text x="84" y="287" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="146" fill="#ffffff">C</text>
+  <rect x="50" y="164" width="106" height="106" rx="12" fill="#C81E1E"/>
+  <text x="103" y="255" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="108" fill="#ffffff">C</text>
 
-  <rect x="164" y="164" width="144" height="144" rx="16" fill="#e6e7ea" stroke="#c7cad0" stroke-width="2"/>
+  <rect x="166" y="166" width="102" height="102" rx="10" fill="#dfe1e5" stroke="#5b616b" stroke-width="4.5"/>
 </svg>

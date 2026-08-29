@@ -8,7 +8,11 @@
     "start": "astro dev",
     "check": "astro check",
     "build": "astro check && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:language-guide": "node --experimental-strip-types --test tests/language-guide.test.mjs tests/convert-language-guide-html.test.mjs",
+    "check:language-guide:dev": "node scripts/check-language-guide-dev.mjs",
+    "check:language-guide:build": "node scripts/check-language-guide-build.mjs",
+    "convert:language-guide": "node scripts/convert-language-guide-html.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -16,5 +20,8 @@
     "astro": "^5.13.0",
     "shiki": "^3.9.2",
     "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "parse5": "^7.3.0"
   }
 }

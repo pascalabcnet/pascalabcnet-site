@@ -114,4 +114,18 @@ const articles = defineCollection({
   })
 });
 
-export const collections = { pages, news, newsEn, conferences, olympiads, examples, articles };
+// Keep the experimental corpus out of production content stores as well as routes.
+const languageGuideNext = defineCollection({
+  loader: import.meta.env.DEV
+    ? glob({ pattern: '**/*.md', base: './src/content/language-guide-next' })
+    : async () => [],
+  schema: z.object({
+    topicId: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/),
+    locale: z.enum(['ru', 'en']).default('ru'),
+    title: z.string().min(1),
+    description: z.string().min(1),
+    keywords: z.array(z.string().min(1)).default([])
+  })
+});
+
+export const collections = { pages, news, newsEn, conferences, olympiads, examples, articles, languageGuideNext };
