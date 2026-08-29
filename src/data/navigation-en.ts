@@ -14,6 +14,7 @@ export const navigationEn: NavigationGroup[] = [
     { label: 'Telegram group', href: externalLinks.telegramGroup, external: true, key: 'telegramGroup' }
   ] },
   { label: 'About', children: [
+    { label: 'About PascalABC.NET', href: '/en/about/' },
     { label: 'Developers', href: '/en/developers/' },
     { label: "What's New", href: '/en/whats-new/' },
     { label: 'GitHub', href: externalLinks.github, external: true, key: 'github' },

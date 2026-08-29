@@ -73,7 +73,7 @@ strong,b,.product-status-version,.product-status li strong{font-weight:600}
 @media(max-width:520px){.tabs-nav{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}.tabs-nav::-webkit-scrollbar{display:none}.tab-btn{flex:0 0 31%;min-width:0;padding:6px 8px;font-size:14px;scroll-snap-align:start}}
 .intro-mobile-copy{display:none}
 @media(max-width:520px){.description p{font-size:13px}.intro-desktop-copy{display:none}.intro-mobile-copy{display:inline}}
-@media(max-width:520px){.tab-content pre{font-size:14px}}
+@media(max-width:520px){.prose pre,.tab-content pre{font-size:14px}}
 .ml-cta-after-tabs{display:none}
 @media(max-width:520px){.site-header{margin-bottom:8px}.description{margin-bottom:12px}.description-cta{gap:10px;margin-bottom:14px}.description-cta .ml-cta-top{display:none}.tabs-section{margin-bottom:12px}.ml-cta-after-tabs{display:flex;width:100%;justify-content:center;margin-bottom:18px}.ml-cta-after-tabs+.cards{margin-top:0}}
 @media(max-width:520px){.page-shell>h1+.prose>h2:first-child{margin-top:20px}}
