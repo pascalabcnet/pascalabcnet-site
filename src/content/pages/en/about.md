@@ -107,14 +107,6 @@ The language supports classes, inheritance, interfaces, polymorphism, generic cl
 
 This makes it possible to use one language for explicit algorithms with loops and conditions, object models, and functional processing of sequences.
 
-## Language features
-
-PascalABC.NET includes generic classes and routines, interfaces, operator overloading, lambda expressions, exceptions, automatic garbage collection, extension methods, auto classes, and pattern matching.
-
-It also provides block-scoped variables and type inference, tuples and multiple assignment, ranges and slices, loops with a step, sequences, and a comprehensive set of sequence-processing methods.
-
-PascalABC.NET compiles to .NET assemblies and can directly use .NET libraries and APIs. Language features specific to PascalABC.NET can therefore be combined with the broader .NET ecosystem.
-
 ## Origins and evolution
 
 PascalABC.NET has been developed as an independent language since **2007**.

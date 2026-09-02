@@ -2,6 +2,7 @@ import type { Locale } from './ui';
 
 const pairs: Record<string, string> = {
   '/': '/en/',
+  '/about/': '/en/about/',
   '/downloads/': '/en/downloads/',
   '/developers/': '/en/developers/',
   '/license/': '/en/license/',

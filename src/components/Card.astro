@@ -2,7 +2,7 @@
 import ExternalLink from './ExternalLink.astro';
 import Icon from './Icon.astro';
 type IconName = 'download' | 'documentation' | 'vscode' | 'stepik' | 'examples' | 'community';
-interface Props { title:string; description?:string; href:string|null; linkLabel?:string; external?:boolean; icon:IconName; }
-const {title,description,href,linkLabel='Перейти →',external=false,icon}=Astro.props;
+interface Props { title:string; description?:string; href:string|null; linkLabel?:string; external?:boolean; icon:IconName; iconSrc?:string; }
+const {title,description,href,linkLabel='Перейти →',external=false,icon,iconSrc}=Astro.props;
 ---
-<article class="card"><h3><Icon name={icon} class="card-icon" />{title}</h3>{description&&<p>{description}</p>}<slot />{external?<ExternalLink href={href} label={title} class="card-link">{linkLabel}</ExternalLink>:href?<a class="card-link" href={href}>{linkLabel}</a>:null}</article>
+<article class="card"><h3>{iconSrc?<img class="card-icon card-icon-image" src={iconSrc} alt="" />:<Icon name={icon} class="card-icon" />}{title}</h3>{description&&<p>{description}</p>}<slot />{external?<ExternalLink href={href} label={title} class="card-link">{linkLabel}</ExternalLink>:href?<a class="card-link" href={href}>{linkLabel}</a>:null}</article>

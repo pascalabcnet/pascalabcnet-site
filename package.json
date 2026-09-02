@@ -9,7 +9,7 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "test:language-guide": "node --experimental-strip-types --test tests/language-guide.test.mjs tests/convert-language-guide-html.test.mjs",
+    "test:language-guide": "node --experimental-strip-types --test tests/language-guide.test.mjs tests/convert-language-guide-html.test.mjs tests/inline-pascal-keywords.test.mjs tests/pascalabc-highlighting.test.mjs",
     "check:language-guide:dev": "node scripts/check-language-guide-dev.mjs",
     "check:language-guide:build": "node scripts/check-language-guide-build.mjs",
     "convert:language-guide": "node scripts/convert-language-guide-html.mjs"

@@ -1,9 +1,10 @@
-// Сколько перестановок слова ОДЕКОЛОН
-// не содержат одинаковых соседних букв?
-##
-'ОДЕКОЛОН'
+﻿##
+function HasEqualAdjacentChars(s: string) :=
+  s.IsMatch('(.)\1');
+
+'LETTER'
   .Permutations
-  .Where(s -> not s.IsMatch('(.)\1'))
+  .Where(s -> not HasEqualAdjacentChars(s))
   .Distinct
   .Count
-  .Print
+  .Print // → 84

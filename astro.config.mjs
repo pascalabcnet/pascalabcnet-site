@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { pascalabcShikiConfig } from './src/syntaxes/pascalabc-highlighting.mjs';
+import inlinePascalKeywords from './src/markdown/inline-pascal-keywords.mjs';
 
 export default defineConfig({
   site: 'https://pascalabc.net',
@@ -16,6 +17,7 @@ export default defineConfig({
     })
   ],
   markdown: {
-    shikiConfig: pascalabcShikiConfig
+    shikiConfig: pascalabcShikiConfig,
+    rehypePlugins: [inlinePascalKeywords]
   }
 });
