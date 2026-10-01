@@ -30,7 +30,7 @@ slug: ssyilki-dlya-skachivaniya
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="2" x2="12" y2="16"/></svg>
       Скачать PascalABC.NET 4.0
     </a>
-    <a href="/license">Лицензионное соглашение →</a>
+    <a href="/whats-new/pascalabcnet-4.0">Что нового в 4.0 →</a>
   </div>
 </section>
 
@@ -55,14 +55,29 @@ slug: ssyilki-dlya-skachivaniya
   <article class="download-card" id="vscode">
     <p class="download-kicker">Visual Studio Code</p>
     <h3>Расширение PascalABC.NET 4.0 для VS Code</h3>
-    <p>Версия расширения 0.4.0<br/>
+    <p>Версия расширения 0.5.1</p>
     <p>Расширение PascalABC.NET для Visual Studio Code содержит компиляторы для .NET Framework 4.7.2 и .NET 10, предоставляет IntelliSense, отображение ошибок, компиляцию и запуск программ.</p>
     <div class="download-card-links">
-      <a class="download-button" href="https://pascalabc.net/downloads/VSCode/pascalabc-net-0.4.0.vsix">
+      <a class="download-button" href="https://pascalabc.net/downloads/VSCode/multitarget-pascalabc-net-0.5.1.vsix">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="2" x2="12" y2="16"/></svg>
-        Скачать расширение для VS Code 0.4.0
+        Скачать расширение для VS Code 0.5.1
       </a>
       <a href="/vscode">Описание и установка →</a>
+    </div>
+  </article>
+</div>
+
+## Предварительная версия
+
+<div class="download-grid download-grid-beta">
+  <article class="download-card download-card-beta">
+    <h3>PascalABC.NET 4.0.1 Beta</h3>
+    <p>Предварительная версия с новыми возможностями и последними исправлениями.</p>
+    <p><strong>Текущая сборка: 4.0.1.3864 · 05.09.2026</strong></p>
+    <div class="download-card-links download-beta-links">
+      <a href="/downloads/PascalABCNETSetup_4-0-1-Beta.exe">Скачать StandardPack 4.0.1 Beta</a>
+      <a href="/downloads/PascalABCNET-Console-net10_4-0-1-Beta.zip">Скачать консольный компилятор 4.0.1 Beta для .NET 10</a>
+      <a class="download-beta-more" href="/whats-new/pascalabcnet-4.0.1">Что нового в 4.0.1 →</a>
     </div>
   </article>
 </div>
@@ -95,8 +110,8 @@ slug: ssyilki-dlya-skachivaniya
 
   <article class="download-card download-card-instruction">
     <p class="download-kicker">macOS</p>
-    <h3>Установка на macOS</h3>
-    <p>Отдельная инструкция по подготовке и запуску PascalABC.NET 4.0 на macOS.</p>
+    <h3>PascalABC.NET для macOS</h3>
+    <p>Установка Visual Studio Code, .NET 10 и расширения PascalABC.NET.</p>
     <a href="/install-macos">Перейти к инструкции →</a>
   </article>
 </div>

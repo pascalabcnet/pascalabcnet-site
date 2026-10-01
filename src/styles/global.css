@@ -79,3 +79,8 @@ strong,b,.product-status-version,.product-status li strong{font-weight:600}
 @media(max-width:520px){.site-header{margin-bottom:8px}.description{margin-bottom:12px}.description-cta{gap:10px;margin-bottom:14px}.description-cta .ml-cta-top{display:none}.tabs-section{margin-bottom:12px}.ml-cta-after-tabs{display:flex;width:100%;justify-content:center;margin-bottom:18px}.ml-cta-after-tabs+.cards{margin-top:0}}
 @media(max-width:520px){.page-shell>h1+.prose>h2:first-child{margin-top:20px}}
 .shiki span[style*="#0067B8"]{font-weight:550}
+.examples-content .prose>p,.examples-content .prose>ul,.examples-content .prose>ol{max-width:none}
+.download-grid-beta{grid-template-columns:1fr}.download-card-beta{border-color:#d8d2e5;background:#f6f3fa}.download-beta-links{align-items:flex-start;flex-direction:column;gap:6px}.download-beta-links a{font-weight:600}.download-beta-links .download-beta-more{font-weight:400}
+.examples-desktop-menu{margin-top:-10px}
+.examples-desktop-menu a{margin-right:8px;padding-right:8px}
+@media(min-width:821px){.examples-layout{grid-template-columns:220px minmax(0,1fr)}}

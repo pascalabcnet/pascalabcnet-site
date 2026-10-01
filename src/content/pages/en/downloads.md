@@ -54,9 +54,9 @@ Choose the PascalABC.NET option that best suits your needs. For the familiar ful
     <h3>PascalABC.NET Extension</h3>
     <p>The multitarget extension includes compilers for .NET Framework 4.7.2 and .NET 10, and provides IntelliSense, error reporting, compilation, and program execution.</p>
     <div class="download-card-links">
-      <a class="download-button" href="https://pascalabc.net/downloads/VSCode/pascalabc-net-0.4.0.vsix">
+      <a class="download-button" href="https://pascalabc.net/downloads/VSCode/multitarget-pascalabc-net-0.5.1.vsix">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="2" x2="12" y2="16"/></svg>
-        Download Extension 0.4.0
+        Download Extension 0.5.1
       </a>
       <a href="/en/vscode">Description and installation →</a>
     </div>
@@ -91,8 +91,8 @@ Choose the PascalABC.NET option that best suits your needs. For the familiar ful
 
   <article class="download-card download-card-instruction">
     <p class="download-kicker">macOS</p>
-    <h3>Installation on macOS</h3>
-    <p>Separate instructions for setting up and running PascalABC.NET on macOS.</p>
+    <h3>PascalABC.NET for macOS</h3>
+    <p>Install Visual Studio Code, .NET 10, and the PascalABC.NET extension.</p>
     <a href="/install-macos">View instructions →</a>
   </article>
 </div>

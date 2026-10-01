@@ -44,7 +44,7 @@ P
 
 ```pascalabc
 begin
-  var s := 'Pascalabc';
+  var s := 'PascalABC';
 
   Println(s.Length);
 end.
@@ -53,7 +53,7 @@ end.
 **Результат:**
 
 ```text
-6
+9
 ```
 
 ## Доступ к символу по индексу
@@ -62,7 +62,7 @@ end.
 
 ```pascalabc
 begin
-  var s := 'Pascalabc';
+  var s := 'PascalABC';
 
   Println(s[1]);
   Println(s[3]);
@@ -82,7 +82,7 @@ s
 
 ```pascalabc
 begin
-  var s := 'Pascalabc';
+  var s := 'PascalABC';
 
   Println(s[^1]);
   Println(s[^2]);
@@ -92,8 +92,8 @@ end.
 **Результат:**
 
 ```text
-l
-a
+C
+B
 ```
 
 ## Нулевая индексация строк
@@ -104,7 +104,7 @@ a
 {$zerobasedstrings}
 
 begin
-  var s := 'Pascalabc';
+  var s := 'PascalABC';
 
   Println(s[0]);
   Println(s[1]);
@@ -154,7 +154,7 @@ end.
 **Результат:**
 
 ```text
-Pascalabc
+P a s c a l a b c
 ```
 
 ## Конкатенация строк
@@ -163,7 +163,7 @@ Pascalabc
 
 ```pascalabc
 begin
-  var s1 := 'Pascalabc';
+  var s1 := 'Pascal';
   var s2 := 'ABC.NET';
 
   var s := s1 + s2;
@@ -318,7 +318,7 @@ three two three
 
 ## Удаление части строки
 
-Процедура `Delete` удаляет из строки указанное количество символов.
+Процедура `Delete` удаляет из строки указанное количество символов с заданной позиции.
 
 ```pascalabc
 begin
@@ -333,7 +333,7 @@ end.
 **Результат:**
 
 ```text
-Pascalabc.NET
+Pascal.NET
 ```
 
 ## Вставка в строку
@@ -342,7 +342,7 @@ Pascalabc.NET
 
 ```pascalabc
 begin
-  var s := 'Pascalabc.NET';
+  var s := 'Pascal.NET';
 
   Insert('ABC', s, 7);
 
@@ -386,15 +386,15 @@ begin
   var s: string := x.ToString;
   var y: integer := s.ToInteger;
 
-  Println(s);
-  Println(y);
+  Println(s,TypeName(s));
+  Println(y,TypeName(y));
 end.
 ```
 
 **Результат:**
 
 ```text
-123
-123
+123 string
+123 integer
 ```
 

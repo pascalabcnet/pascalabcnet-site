@@ -7,21 +7,23 @@ description: "PascalABC.NET is a modern, statically typed programming language f
 
 PascalABC.NET is a modern, statically typed, general-purpose programming language and programming system for the .NET platform.
 
-Despite its name, PascalABC.NET is neither an implementation of classic Pascal nor a Delphi dialect. It inherits part of the Pascal syntax and its emphasis on structured, readable programs, while providing its own language features and an independent path of development.
+It builds on the Pascal tradition, retaining its clear syntax and core principles while extending them with modern language constructs and the capabilities of the .NET platform. Today, PascalABC.NET is developed as an independent language, substantially different from both classic Pascal and Delphi.
 
-PascalABC.NET can be used for a first program, for studying algorithms and data structures, for learning object-oriented and functional programming, for scientific computing and data analysis, and for building applications with .NET libraries.
+With PascalABC.NET, you can write a first program in just a few lines, study algorithms and data structures, learn object-oriented and functional programming, solve competitive programming problems, use .NET libraries, build applications, analyze data, and experiment with machine-learning methods.
 
-Its central idea is to **make modern programming approachable without reducing the language to a limited teaching tool**.
+This breadth reflects the original idea behind PascalABC.NET: **to make modern programming approachable while creating a complete and versatile language**.
 
 ## Why PascalABC.NET was created
 
-Languages designed for a first programming course are often outgrown as tasks become more complex. Production-oriented languages, on the other hand, may require beginners to deal with considerable technical detail before they have mastered fundamental programming concepts.
+There is often a gap between taking the first steps in programming and building complex software: simple tools are no longer sufficient, while mastering professional languages requires dealing with numerous technical details.
 
-PascalABC.NET is designed to support a longer learning and development path within one language: from small programs and classical algorithms to modern abstractions, the .NET ecosystem, and substantial software projects.
+PascalABC.NET was created so that this path could be followed within a single language environment: from first programs and classical algorithms to modern abstractions, .NET libraries, and complex software projects.
 
-The language remains statically typed and compiled. The compiler detects many errors before a program is run, while compiled code provides efficient execution.
+The language is statically typed and compiled: the compiler detects many errors before a program is run, while compiled code provides efficient execution.
 
-The design therefore aims for a balance of **clarity, early error detection, expressive power, and performance**.
+At the core of PascalABC.NET is a balance of **simplicity, early error detection, expressive power, and performance**.
+
+The language evolves through continuous feedback from both teaching practice and real-world use. For many years, new constructs, libraries, and approaches have been tested in courses at different levels and in practical work—from first programs and classical algorithms to competitive programming, data processing, and application development. This experience shapes the language's clarity and consistency without limiting its range of use.
 
 ## Language design principles
 

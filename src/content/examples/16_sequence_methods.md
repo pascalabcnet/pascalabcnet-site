@@ -195,7 +195,7 @@ end.
 begin
   var a := Arr(1..5);
 
-  var s: sequence of integer := a.Select(x -> x*x)
+  var s: sequence of integer := a.Select(x -> x*x);
   s.Println;
 end.
 ```
@@ -594,7 +594,7 @@ end.
 (3,3) (1,2) (2,2)
 ```
 
-## Частоты символов
+## Частоты символов и слов
 
 `EachCount` удобно использовать для построения частотного словаря символов и слов.
 
@@ -612,7 +612,7 @@ end.
 
 ```text
 (a,5) (b,2) (r,2) (c,1) (d,1)
-(o,8) (n,4) (e,6) ( ,8) (t,2) (w,1) (h,1) (r,4) (f,3) (u,3)
+(one,4) (two,1) (three,1) (four,3)
 ```
 
 
@@ -645,8 +645,7 @@ begin
   foreach var g in words.GroupBy(s -> s.Length) do
   begin
     Print($'{g.Key}:');
-    g.Print;
-    Println;
+    g.Println;
   end;
 end.
 ```

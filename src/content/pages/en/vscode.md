@@ -11,11 +11,13 @@ The official extension provides full-featured PascalABC.NET support in **Visual 
 
 You can download the extension from the [PascalABC.NET downloads page](/en/downloads) or directly as a VSIX file:
 
-[Download PascalABC.NET Extension 0.4.0 for VS Code →](https://pascalabc.net/downloads/VSCode/pascalabc-net-0.4.0.vsix)
+[Download PascalABC.NET Extension 0.5.1 for VS Code →](https://pascalabc.net/downloads/VSCode/multitarget-pascalabc-net-0.5.1.vsix)
 
 ## Installation in Visual Studio Code
 
-1. Download the `pascalabc-net-0.4.0.vsix` file.
+The extension requires [.NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+1. Download the `multitarget-pascalabc-net-0.5.1.vsix` file.
 2. In Visual Studio Code, open **View → Extensions**.
 3. Click the **…** button in the **EXTENSIONS** header.
 4. Select **Install from VSIX…**.
@@ -36,6 +38,10 @@ The extension uses a dedicated Language Server integrated with the PascalABC.NET
 - display of compilation errors;
 - program compilation and execution;
 - selection of the target platform: **.NET Framework 4.7.2 or .NET 10**.
+
+**IntelliSense**, including code suggestions, type information, Signature Help, and error reporting, works on Windows, Linux, and macOS.
+
+> **Linux and macOS:** program compilation and execution are available for the **.NET 10** target. The **.NET Framework 4.7.2** target is supported only on Windows. On macOS, PascalABC.NET currently works only through Visual Studio Code, without debugger support.
 
 <div class="vscode-interface-notes">
   <figure>

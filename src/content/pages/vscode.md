@@ -10,11 +10,13 @@ slug: vscode
 
 Расширение можно скачать на [общей странице загрузок PascalABC.NET](/ssyilki-dlya-skachivaniya) или непосредственно в формате VSIX:
 
-[Скачать расширение PascalABC.NET 0.4.0 для VS Code →](https://pascalabc.net/downloads/VSCode/pascalabc-net-0.4.0.vsix)
+[Скачать расширение PascalABC.NET 0.5.1 для VS Code →](https://pascalabc.net/downloads/VSCode/multitarget-pascalabc-net-0.5.1.vsix)
 
 ## Установка в Visual Studio Code
 
-1. Скачайте файл `pascalabc-net-0.4.0.vsix`.
+Для работы расширения необходимо установить [.NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+1. Скачайте файл `multitarget-pascalabc-net-0.5.1.vsix`.
 2. В Visual Studio Code откройте **View → Extensions**.
 3. Нажмите кнопку **…** в строке **EXTENSIONS**.
 4. Выберите пункт **Install from VSIX…**.
@@ -36,9 +38,9 @@ slug: vscode
 - компиляцию и запуск программ;
 - выбор целевой платформы **.NET Framework 4.7.2 или .NET 10**.
 
-Средства **IntelliSense**, включая подсказки по коду, сведения о типах, Signature Help и отображение ошибок, работают как в Windows, так и в Linux.
+Средства **IntelliSense**, включая подсказки по коду, сведения о типах, Signature Help и отображение ошибок, работают в Windows, Linux и macOS.
 
-> **Linux:** компиляция и запуск программ доступны только для целевой платформы **.NET 10**. Target **.NET Framework 4.7.2** поддерживается только в Windows.
+> **Linux и macOS:** компиляция и запуск программ доступны для целевой платформы **.NET 10**. Target **.NET Framework 4.7.2** поддерживается только в Windows. В macOS PascalABC.NET пока работает только через Visual Studio Code, без отладчика.
 
 <div class="vscode-interface-notes">
   <figure>

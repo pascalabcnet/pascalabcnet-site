@@ -7,7 +7,7 @@ description: Изменения и новые возможности PascalABC.N
 
 <div class="release-index">
   <article>
-    <p class="release-line"><strong>PascalABC.NET 4.0</strong></p>
+    <p class="release-line">[20.08.26] <strong>PascalABC.NET 4.0</strong></p>
     <p class="release-link"><a href="/whats-new/pascalabcnet-4.0">Изменения описаны здесь.</a></p>
   </article>
   <article>
