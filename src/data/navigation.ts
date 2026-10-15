@@ -32,6 +32,7 @@ export const navigation: NavigationGroup[] = [
     external('MAX-канал', 'maxChannel'), external('MAX-группа', 'maxGroup')
   ]},
   { label: 'О проекте', children: [
+    { label: 'Планы развития', href: '/roadmap/' },
     { label: 'О PascalABC.NET', href: '/about' }, { label: 'Разработчики', href: '/developers' }, { label: 'Что нового', href: '/whats-new' },
     { label: 'Конференции', href: '/conferences' }, { label: 'Доклады и публикации', href: '/publications' },
     external('GitHub', 'github'), { label: 'Лицензионное соглашение', href: '/license' }

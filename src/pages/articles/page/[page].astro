@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleArchive from '../../../components/ArticleArchive.astro';
+import { publishedCategories } from '../../../lib/article-categories';
 
 export async function getStaticPaths() {
   const pageSize = 8;
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
       params: { page: String(currentPage) },
       props: {
         items: allItems.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+        categories: publishedCategories(allItems),
         currentPage,
         totalPages
       }
@@ -21,8 +23,8 @@ export async function getStaticPaths() {
   });
 }
 
-const { items, currentPage, totalPages } = Astro.props;
+const { items, categories, currentPage, totalPages } = Astro.props;
 ---
 <BaseLayout title={`Статьи — страница ${currentPage}`} description="Архив авторских статей о PascalABC.NET">
-  <ArticleArchive items={items} currentPage={currentPage} totalPages={totalPages} />
+  <ArticleArchive items={items} categories={categories} currentPage={currentPage} totalPages={totalPages} />
 </BaseLayout>

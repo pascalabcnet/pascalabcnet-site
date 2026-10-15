@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import 'katex/dist/katex.min.css';
 
 export async function getStaticPaths() {
   const items = await getCollection('articles', ({ data }) => !data.draft);
@@ -34,3 +35,7 @@ const articleSchema = {
   </article>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
 </BaseLayout>
+
+<style is:global>
+  .article-page .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+</style>

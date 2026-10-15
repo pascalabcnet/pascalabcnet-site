@@ -3,7 +3,7 @@ title: "Регулярные выражения в PascalABC.NET: поиск, р
 displayTitle: Регулярно выражаемся
 description: "Регулярные выражения в PascalABC.NET: поиск, разбиение и замена строк, группы, квантификаторы, опции и основные возможности класса Regex."
 
-category: Язык PascalABC.NET
+category: .NET и библиотеки
 
 tags:
   - регулярные выражения

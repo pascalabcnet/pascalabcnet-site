@@ -9,6 +9,7 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "test:articles": "npm run build && node --test tests/articles-build.test.mjs",
     "test:language-guide": "node --experimental-strip-types --test tests/language-guide.test.mjs tests/convert-language-guide-html.test.mjs tests/inline-pascal-keywords.test.mjs tests/pascalabc-highlighting.test.mjs",
     "check:language-guide:dev": "node scripts/check-language-guide-dev.mjs",
     "check:language-guide:build": "node scripts/check-language-guide-build.mjs",
@@ -18,6 +19,9 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.13.0",
+    "katex": "^0.16.47",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "shiki": "^3.9.2",
     "typescript": "^5.9.2"
   },

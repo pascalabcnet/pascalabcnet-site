@@ -5,7 +5,7 @@ slug: en/downloads
 translationStatus: translated
 ---
 
-Choose the PascalABC.NET option that best suits your needs. For the familiar full Windows environment, use **StandardPack**. For modern .NET 10 capabilities, we recommend the multitarget **PascalABC.NET extension for Visual Studio Code**.
+Choose the PascalABC.NET option that best suits your needs. For the familiar full Windows environment, use **StandardPack**. To compile and run programs on .NET 10, choose **Net10Pack for Windows**, the multitarget **PascalABC.NET extension for Visual Studio Code**, or the console compiler.
 
 <nav class="download-choice" aria-label="Quick download option selection">
   <a href="#standardpack"><strong>Full Windows environment</strong><span>StandardPack · .NET Framework 4.7.2</span></a>
@@ -32,6 +32,23 @@ Choose the PascalABC.NET option that best suits your needs. For the familiar ful
 </section>
 
 ## Modern Tools
+
+<section class="download-hero" id="net10pack">
+  <p class="download-kicker">Version with .NET 10 support</p>
+  <h2>PascalABC.NET 4.0 Net10Pack for Windows</h2>
+  <p class="download-summary">The complete PascalABC.NET distribution for Windows. Includes:</p>
+  <ul>
+    <li>a compiler for .NET Framework 4.7.2;</li>
+    <li>a compiler for .NET 10.</li>
+  </ul>
+  <p>Switch between target platforms for compiling and running programs in the <strong>Program</strong> menu.</p>
+  <div class="download-actions">
+    <a class="download-button download-button-primary" href="https://pascalabc.net/downloads/PascalABCNETSetupNet10.exe">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="2" x2="12" y2="16"/></svg>
+      Download PascalABC.NET 4.0 Net10Pack
+    </a>
+  </div>
+</section>
 
 <div class="download-grid download-grid-modern">
   <article class="download-card" id="console-net10">

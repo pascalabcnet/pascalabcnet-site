@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ArticleArchive from '../../../../components/ArticleArchive.astro';
+import { publishedCategories } from '../../../../lib/article-categories';
+
+export async function getStaticPaths() {
+  const pageSize = 8;
+  const allItems = (await getCollection('articlesEn', ({ data }) => !data.draft))
+    .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+  const totalPages = Math.ceil(allItems.length / pageSize);
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => ({
+    params: { page: String(index + 2) },
+    props: {
+      items: allItems.slice((index + 1) * pageSize, (index + 2) * pageSize),
+      categories: publishedCategories(allItems, 'en'),
+      currentPage: index + 2,
+      totalPages,
+    },
+  }));
+}
+
+const { items, categories, currentPage, totalPages } = Astro.props;
+---
+<BaseLayout locale="en" title={`PascalABC.NET Articles — Page ${currentPage}`} description={`Page ${currentPage} of the PascalABC.NET tutorial archive: programming techniques, algorithms, and libraries.`}>
+  <ArticleArchive locale="en" items={items} categories={categories} currentPage={currentPage} totalPages={totalPages} />
+</BaseLayout>

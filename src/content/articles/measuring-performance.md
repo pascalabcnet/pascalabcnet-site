@@ -2,7 +2,7 @@
 title: "Производительность PascalABC.NET, C#, C++ и Free Pascal"
 displayTitle: Меряем производительность
 description: "Сравнение производительности PascalABC.NET, C#, C++ и Free Pascal на примере умножения матриц и оптимизации работы с кешем и OpenMP."
-category: Язык PascalABC.NET
+category: Производительность
 tags: 
   - производительность
   - оптимизация

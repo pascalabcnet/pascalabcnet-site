@@ -1,0 +1,116 @@
+---
+import type { Locale } from '../i18n/ui';
+
+interface Props { locale?: Locale }
+const { locale = 'ru' } = Astro.props;
+const en = locale === 'en';
+const sections = en ? [
+  {
+    status: 'done', title: 'Done', items: [
+      { text: 'PascalABC.NET 4.0 with .NET Framework 4.8 and .NET 10 support' },
+      { text: 'Official PascalABC.NET extension for VS Code' },
+      { text: 'Windows, Linux, and macOS support for .NET 10' },
+      { text: 'ML PascalABC.NET' },
+      { text: 'New PascalABC.NET website' },
+      { text: 'New series of code example pages' },
+    ],
+  },
+  {
+    status: 'progress', title: 'In progress', items: [
+      { text: 'Full .NET 10 integration into the main PascalABC.NET IDE' },
+      { text: 'Modernizing PABCSystem for modern .NET' },
+      { text: 'Graphics modules for .NET 10' },
+      { text: 'Reworking and updating the standard examples' },
+    ],
+  },
+  {
+    status: 'next', title: 'Up next', items: [
+      { text: 'PascalABC.NET SDK', detail: 'A unified toolkit for developing PascalABC.NET applications, without requiring a separate .NET SDK installation.' },
+      { text: 'Full NuGet package support' },
+      { text: 'Modern build and project system' },
+      { text: 'Debugging .NET 10 programs' },
+    ],
+  },
+  {
+    status: 'later', title: 'Further ahead', items: [
+      { text: 'Further development of VS Code tools' },
+      { text: 'PascalABC.NET integration with AI' },
+      { text: 'Server-side compilation and execution of PascalABC.NET programs' },
+      { text: 'Further development of documentation and the Language Reference' },
+    ],
+  },
+] : [
+  {
+    status: 'done', title: 'Сделано', items: [
+      { text: 'PascalABC.NET 4.0 с поддержкой .NET Framework 4.8 и .NET 10' },
+      { text: 'Официальный плагин PascalABC.NET для VS Code' },
+      { text: 'Поддержка Windows, Linux и macOS для .NET 10' },
+      { text: 'ML PascalABC.NET' },
+      { text: 'Новый сайт PascalABC.NET' },
+      { text: 'Новая серия страниц с примерами' },
+    ],
+  },
+  {
+    status: 'progress', title: 'В работе', items: [
+      { text: 'Полная интеграция .NET 10 в основную IDE PascalABC.NET' },
+      { text: 'Модернизация PABCSystem для современного .NET' },
+      { text: 'Графические модули для .NET 10' },
+      { text: 'Переработка и обновление стандартных примеров' },
+    ],
+  },
+  {
+    status: 'next', title: 'Ближайшие планы', items: [
+      { text: 'PascalABC.NET SDK', detail: 'Единый комплект средств разработки PascalABC.NET-приложений, не требующий отдельной установки .NET SDK.' },
+      { text: 'Полноценная поддержка NuGet-пакетов' },
+      { text: 'Современная система сборки и проектов' },
+      { text: 'Отладка программ .NET 10' },
+    ],
+  },
+  {
+    status: 'later', title: 'Дальше', items: [
+      { text: 'Развитие инструментов VS Code' },
+      { text: 'Интеграция PascalABC.NET с ИИ' },
+      { text: 'Серверная система компиляции и запуска PascalABC.NET-программ' },
+      { text: 'Дальнейшее развитие документации и Language Reference' },
+    ],
+  },
+];
+---
+<article class="page-shell roadmap-page">
+  <h1>{en ? 'Roadmap' : 'Планы развития'}</h1>
+  <p class="roadmap-intro">{en
+    ? 'Key development directions. Priorities may change; no fixed deadlines are set.'
+    : 'Основные направления развития. Приоритеты могут меняться; жёсткие сроки не устанавливаются.'}</p>
+  <div class="roadmap-grid">
+    {sections.map(section => <section class:list={['roadmap-card', `roadmap-${section.status}`]} aria-labelledby={`roadmap-${section.status}`}>
+      <h2 id={`roadmap-${section.status}`}><span class="status-dot" aria-hidden="true"></span>{section.title}</h2>
+      <ul>
+        {section.items.map(item => <li>
+          {item.text}
+          {'detail' in item && <span class="roadmap-detail">{item.detail}</span>}
+        </li>)}
+      </ul>
+    </section>)}
+  </div>
+</article>
+
+<style>
+  .roadmap-page { max-width: 1100px; }
+  .roadmap-intro { margin: 0 0 20px; color: #596570; font-size: 14px; }
+  .roadmap-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .roadmap-card { --status-color: #798592; padding: 18px 20px; border: 1px solid var(--line); border-top: 3px solid var(--status-color); border-radius: 6px; background: #fff; }
+  .roadmap-card h2 { display: flex; align-items: center; gap: 9px; margin: 0 0 12px; font-size: 18px; }
+  .status-dot { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: var(--status-color); }
+  .roadmap-done { --status-color: #368362; }
+  .roadmap-progress { --status-color: #3674a6; }
+  .roadmap-next { --status-color: #9b772f; }
+  .roadmap-later { --status-color: #7b7194; }
+  .roadmap-card ul { margin: 0; padding-left: 19px; }
+  .roadmap-card li { padding-left: 2px; color: #343e47; font-size: 14px; line-height: 1.5; }
+  .roadmap-card li + li { margin-top: 7px; }
+  .roadmap-detail { display: block; margin-top: 3px; color: #64717b; font-size: 13px; }
+  @media (max-width: 700px) {
+    .roadmap-grid { grid-template-columns: 1fr; gap: 12px; }
+    .roadmap-card { padding: 16px; }
+  }
+</style>

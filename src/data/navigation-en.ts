@@ -6,6 +6,7 @@ export const navigationEn: NavigationGroup[] = [
   { label: 'Home', href: '/en/' },
   { label: 'Download', children: [{ label: 'Download PascalABC.NET', href: '/en/downloads/' }] },
   { label: 'Documentation', children: [
+    { label: 'Articles', href: '/en/articles/' },
     ...(import.meta.env.DEV ? [{ label: guideUI.en.devMenu, href: '/language-guide/' }] : []),
     { label: 'PascalABC.NET in Y minutes', href: externalLinks.yMinutesEnglish, external: true, key: 'yMinutesEnglish' }
   ] },
@@ -14,6 +15,7 @@ export const navigationEn: NavigationGroup[] = [
     { label: 'Telegram group', href: externalLinks.telegramGroup, external: true, key: 'telegramGroup' }
   ] },
   { label: 'About', children: [
+    { label: 'Roadmap', href: '/en/roadmap/' },
     { label: 'About PascalABC.NET', href: '/en/about/' },
     { label: 'Developers', href: '/en/developers/' },
     { label: "What's New", href: '/en/whats-new/' },

@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PascalABC.NET: результаты обновления сайта</title>
+  <style>
+    :root {
+      --ink: #15212b;
+      --muted: #5c6b77;
+      --blue: #306998;
+      --blue-dark: #183f63;
+      --blue-bright: #4f84bd;
+      --blue-pale: #eaf2f8;
+      --line: #d7e0e7;
+      --paper: #ffffff;
+      --canvas: #dfe8ef;
+      --green: #27864b;
+      --red: #d53636;
+      --violet: #74558e;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(79, 132, 189, .18), transparent 28%),
+        var(--canvas);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      grid-template-rows: auto 1fr auto;
+      width: min(100vw, 177.78vh);
+      height: min(100vh, 56.25vw);
+      margin: auto;
+      padding: clamp(34px, 5.2vh, 64px) clamp(42px, 6vw, 104px) clamp(28px, 4.2vh, 50px);
+      background: var(--paper);
+      box-shadow: 0 24px 70px rgba(19, 46, 67, .20);
+    }
+
+    .slide.active { display: grid; }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 9px;
+      height: 100%;
+      background: var(--blue);
+    }
+
+    .slide.cover {
+      padding-left: clamp(54px, 8vw, 136px);
+      background:
+        linear-gradient(112deg, #fff 0 61%, transparent 61%),
+        linear-gradient(145deg, #4279aa, #173e61);
+    }
+
+    .slide.cover::before { width: 16px; }
+
+    .slide-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: clamp(18px, 2.6vh, 28px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .slide-head h2 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(31px, 3.6vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      font-weight: 660;
+    }
+
+    .slide-no {
+      flex: 0 0 auto;
+      padding-top: 5px;
+      color: var(--blue);
+      font-size: clamp(17px, 1.3vw, 23px);
+      font-weight: 650;
+    }
+
+    .slide-body {
+      min-height: 0;
+      align-self: center;
+      padding: clamp(22px, 3.4vh, 40px) 0;
+    }
+
+    .slide-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      color: #74818b;
+      font-size: clamp(12px, 1vw, 16px);
+    }
+
+    .wordmark {
+      font-size: clamp(55px, 7.2vw, 112px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      font-weight: 750;
+    }
+
+    .wordmark .abc { color: #467ab9; }
+    .wordmark .net { color: var(--ink); }
+
+    .cover-copy {
+      align-self: center;
+      max-width: 900px;
+    }
+
+    .cover-copy h1 {
+      margin: clamp(36px, 6vh, 70px) 0 16px;
+      max-width: 850px;
+      font-size: clamp(34px, 4.4vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      font-weight: 620;
+    }
+
+    .cover-copy p {
+      margin: 0;
+      max-width: 730px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.75vw, 29px);
+      line-height: 1.45;
+    }
+
+    .cover-date {
+      color: var(--blue-dark);
+      font-size: clamp(14px, 1.15vw, 19px);
+      font-weight: 600;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(42px, 6vw, 90px);
+      align-items: center;
+    }
+
+    .copy-large {
+      margin: 0;
+      font-size: clamp(22px, 2.25vw, 35px);
+      line-height: 1.42;
+      letter-spacing: -.012em;
+    }
+
+    .copy-large strong { color: var(--blue-dark); }
+
+    .plain-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: clamp(18px, 1.75vw, 28px);
+      line-height: 1.35;
+    }
+
+    .plain-list li {
+      position: relative;
+      padding: 13px 0 13px 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .plain-list li:last-child { border-bottom: 0; }
+
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.17em;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--blue-bright);
+    }
+
+    .metric-line {
+      display: grid;
+      grid-template-columns: 1.15fr .9fr .8fr;
+      gap: clamp(28px, 4vw, 62px);
+      align-items: end;
+    }
+
+    .metric {
+      padding-top: 18px;
+      border-top: 5px solid var(--blue);
+    }
+
+    .metric:nth-child(2) { border-color: var(--green); }
+    .metric:nth-child(3) { border-color: var(--violet); }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(54px, 7vw, 108px);
+      line-height: .9;
+      letter-spacing: -.06em;
+      font-weight: 720;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.55vw, 25px);
+      line-height: 1.32;
+    }
+
+    .topic-spectrum {
+      display: grid;
+      grid-template-columns: repeat(17, 1fr);
+      gap: 5px;
+      height: 72px;
+      margin-top: clamp(34px, 5vh, 65px);
+      align-items: end;
+    }
+
+    .topic-spectrum i {
+      display: block;
+      height: calc(28px + var(--n) * 4px);
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(to top, var(--blue-dark), var(--blue-bright));
+      opacity: calc(.52 + var(--n) * .04);
+    }
+
+    .spectrum-label {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: clamp(13px, 1.05vw, 17px);
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 70px 1fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .state {
+      min-height: 310px;
+      padding: clamp(24px, 3vw, 42px);
+      border-top: 6px solid #aab7c1;
+      background: #f3f5f6;
+    }
+
+    .state.after {
+      border-color: var(--blue);
+      background: var(--blue-pale);
+    }
+
+    .state-label {
+      margin: 0 0 19px;
+      color: var(--muted);
+      font-size: clamp(14px, 1.1vw, 18px);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .state h3 {
+      margin: 0 0 22px;
+      font-size: clamp(25px, 2.4vw, 38px);
+      line-height: 1.12;
+    }
+
+    .state p {
+      margin: 0;
+      color: #46545e;
+      font-size: clamp(17px, 1.5vw, 24px);
+      line-height: 1.45;
+    }
+
+    .transition {
+      color: var(--blue);
+      font-size: 54px;
+      text-align: center;
+    }
+
+    .quote {
+      margin: 0;
+      padding-left: clamp(26px, 3vw, 46px);
+      border-left: 7px solid var(--blue);
+      font-size: clamp(25px, 2.65vw, 43px);
+      line-height: 1.35;
+      letter-spacing: -.016em;
+    }
+
+    .quote strong { color: var(--blue-dark); }
+
+    .quote-note {
+      margin: clamp(24px, 3.4vh, 38px) 0 0 clamp(33px, 3.8vw, 58px);
+      max-width: 1040px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.4vw, 23px);
+      line-height: 1.5;
+    }
+
+    .release-layout {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: clamp(42px, 6vw, 90px);
+      align-items: center;
+    }
+
+    .version {
+      color: var(--violet);
+      font-size: clamp(64px, 8vw, 126px);
+      line-height: .87;
+      letter-spacing: -.065em;
+      font-weight: 750;
+    }
+
+    .version small {
+      display: block;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.5vw, 24px);
+      line-height: 1.3;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+
+    .release-flow {
+      padding-left: clamp(28px, 4vw, 58px);
+      border-left: 1px solid var(--line);
+    }
+
+    .release-flow h3 {
+      margin: 0 0 13px;
+      font-size: clamp(24px, 2.3vw, 37px);
+    }
+
+    .release-flow p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.45vw, 23px);
+      line-height: 1.48;
+    }
+
+    .release-flow code {
+      color: var(--blue-dark);
+      font-family: Consolas, monospace;
+      font-size: .93em;
+    }
+
+    .identity-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(250px, .65fr);
+      gap: clamp(46px, 7vw, 105px);
+      align-items: center;
+    }
+
+    .icon-art {
+      justify-self: center;
+      width: min(31vw, 410px);
+      aspect-ratio: 1;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 22px rgba(19, 48, 72, .20));
+    }
+
+    .icon-rules {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.25vw, 20px);
+      line-height: 1.5;
+    }
+
+    .technical-path {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      align-items: stretch;
+      margin-top: 20px;
+    }
+
+    .technical-path div {
+      position: relative;
+      padding: 27px 25px 25px;
+      border-top: 4px solid var(--blue);
+      background: linear-gradient(to bottom, var(--blue-pale), #fff 82%);
+    }
+
+    .technical-path div + div { border-left: 1px solid var(--line); }
+
+    .technical-path strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--blue-dark);
+      font-size: clamp(18px, 1.55vw, 25px);
+    }
+
+    .technical-path span {
+      color: var(--muted);
+      font-size: clamp(14px, 1.15vw, 19px);
+      line-height: 1.42;
+    }
+
+    .status {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, .82fr);
+      gap: clamp(55px, 8vw, 125px);
+      align-items: center;
+    }
+
+    .status-main {
+      font-size: clamp(26px, 2.9vw, 47px);
+      line-height: 1.28;
+      letter-spacing: -.02em;
+    }
+
+    .status-main strong { color: var(--blue-dark); }
+
+    .next-steps {
+      padding-left: clamp(26px, 3vw, 45px);
+      border-left: 5px solid var(--green);
+    }
+
+    .next-steps h3 {
+      margin: 0 0 18px;
+      font-size: clamp(22px, 2vw, 32px);
+    }
+
+    .next-steps ol {
+      margin: 0;
+      padding-left: 1.35em;
+      color: #46545e;
+      font-size: clamp(17px, 1.4vw, 23px);
+      line-height: 1.55;
+    }
+
+    .controls {
+      position: fixed;
+      z-index: 20;
+      right: 22px;
+      bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 999px;
+      background: rgba(20, 47, 68, .84);
+      box-shadow: 0 8px 25px rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .controls button {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .controls button:hover,
+    .controls button:focus-visible { background: rgba(255,255,255,.16); }
+
+    .counter {
+      min-width: 54px;
+      color: #fff;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 21;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 0;
+      background: var(--blue-bright);
+      transition: width .2s ease;
+    }
+
+    .keyboard-hint {
+      position: fixed;
+      z-index: 20;
+      left: 20px;
+      bottom: 16px;
+      padding: 7px 11px;
+      border-radius: 5px;
+      background: rgba(255,255,255,.82);
+      color: #53626e;
+      font-size: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    @media (max-width: 760px), (max-height: 560px) {
+      .keyboard-hint { display: none; }
+      .slide { padding: 26px 34px 24px 42px; }
+      .slide-body { padding: 18px 0; }
+      .plain-list li { padding-top: 7px; padding-bottom: 7px; }
+      .state { min-height: 220px; }
+      .controls { right: 12px; bottom: 10px; }
+    }
+
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { overflow: visible; width: auto; height: auto; background: #fff; }
+      .slide, .slide.active {
+        position: relative;
+        display: grid;
+        width: 13.333in;
+        height: 7.5in;
+        page-break-after: always;
+        box-shadow: none;
+      }
+      .controls, .progress, .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-label="Презентация результатов обновления сайта PascalABC.NET">
+    <section class="slide cover active" data-title="Обложка">
+      <div></div>
+      <div class="cover-copy">
+        <div class="wordmark">Pascal<span class="abc">ABC</span><span class="net">.NET</span></div>
+        <h1>Результаты обновления сайта</h1>
+        <p>Главная страница, примеры кода, позиционирование языка, загрузки и визуальная идентичность</p>
+      </div>
+      <div class="cover-date">Состояние на 9 сентября 2026 года</div>
+    </section>
+
+    <section class="slide" data-title="Общий результат">
+      <header class="slide-head"><h2>Обновление охватило весь основной путь пользователя</h2><span class="slide-no">02</span></header>
+      <div class="slide-body two-col">
+        <p class="copy-large">Сайт стал точнее объяснять, <strong>что такое PascalABC.NET</strong>, быстрее подводить к примерам и загрузке, а на мобильных экранах сохранять читаемый ритм.</p>
+        <ul class="plain-list">
+          <li>Главная и мобильная компоновка</li>
+          <li>17 тематических страниц примеров</li>
+          <li>Русская и английская версии About</li>
+          <li>Загрузка 4.0 и предварительная 4.0.1</li>
+          <li>Иконки, favicon, robots.txt и Sitemap</li>
+        </ul>
+      </div>
+      <footer class="slide-foot"><span>PascalABC.NET</span><span>Результаты обновления сайта</span></footer>
+    </section>
+
+    <section class="slide" data-title="Масштаб примеров">
+      <header class="slide-head"><h2>Раздел примеров превратился в самостоятельную базу материалов</h2><span class="slide-no">03</span></header>
+      <div class="slide-body">
+        <div class="metric-line">
+          <div class="metric"><strong>250+</strong><span>небольших программ с пояснениями</span></div>
+          <div class="metric"><strong>17</strong><span>тематических страниц</span></div>
+          <div class="metric"><strong>6</strong><span>быстрых примеров на Главной</span></div>
+        </div>
+        <div class="topic-spectrum" aria-label="Семнадцать тематических разделов">
+          <i style="--n:2"></i><i style="--n:5"></i><i style="--n:3"></i><i style="--n:6"></i><i style="--n:4"></i><i style="--n:7"></i><i style="--n:3"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:2"></i><i style="--n:7"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:3"></i><i style="--n:6"></i><i style="--n:4"></i><i style="--n:7"></i>
+        </div>
+        <p class="spectrum-label">Основы, условия, циклы, строки, коллекции, функции, последовательности, файлы и регулярные выражения</p>
+      </div>
+      <footer class="slide-foot"><span>Раздел /examples/</span><span>17 тем и более 250 программ</span></footer>
+    </section>
+
+    <section class="slide" data-title="Главная и мобильная версия">
+      <header class="slide-head"><h2>Главная стала компактнее на мобильных без изменений десктопного текста</h2><span class="slide-no">04</span></header>
+      <div class="slide-body before-after">
+        <div class="state">
+          <p class="state-label">Проблема</p>
+          <h3>Первый экран занимал слишком много места</h3>
+          <p>Длинный вводный текст, крупные табы и неодинаковые интервалы отодвигали примеры и основные ссылки вниз.</p>
+        </div>
+        <div class="transition" aria-hidden="true">›</div>
+        <div class="state after">
+          <p class="state-label">Результат</p>
+          <h3>Содержание видно раньше</h3>
+          <p>Мобильный вариант абзаца сокращён, интервалы выровнены, табы уплотнены, а кнопки сохранили исходный размер шрифта.</p>
+        </div>
+      </div>
+      <footer class="slide-foot"><span>Адаптивность</span><span>Десктопная версия сохранена</span></footer>
+    </section>
+
+    <section class="slide" data-title="Позиционирование языка">
+      <header class="slide-head"><h2>About теперь описывает язык спокойно и точно</h2><span class="slide-no">05</span></header>
+      <div class="slide-body">
+        <blockquote class="quote">PascalABC.NET продолжает традиции Pascal и развивается как <strong>самостоятельный современный универсальный язык</strong> для платформы .NET.</blockquote>
+        <p class="quote-note">Русская версия сохраняет связь с происхождением проекта. Английская версия убирает локальные российские реалии и не преувеличивает роль научных исследований. Формулировка «учебный язык» не используется.</p>
+      </div>
+      <footer class="slide-foot"><span>/about/ и /en/about/</span><span>Переключатель языка сохраняет текущую страницу</span></footer>
+    </section>
+
+    <section class="slide" data-title="Загрузки и версии">
+      <header class="slide-head"><h2>Страница загрузки разделяет стабильную и предварительную версии</h2><span class="slide-no">06</span></header>
+      <div class="slide-body release-layout">
+        <div class="version">4.0.1<small>Beta, сборка 3864<br>5 сентября 2026 года</small></div>
+        <div class="release-flow">
+          <h3>Компактная карточка без лишних повторов</h3>
+          <p>Две текстовые ссылки ведут на StandardPack и консольный компилятор для .NET 10. Ссылка «Что нового в 4.0.1» остаётся обычной, нежирной.</p>
+          <h3>Первая страница изменений</h3>
+          <p>Описана функция <code>Copy</code> для стандартных обобщённых коллекций и различие между копированием контейнера и присваиванием ссылки.</p>
+        </div>
+      </div>
+      <footer class="slide-foot"><span>/ssylki-dlya-skachivaniya/</span><span>/whats-new/pascalabcnet-4.0.1/</span></footer>
+    </section>
+
+    <section class="slide" data-title="Визуальная идентичность">
+      <header class="slide-head"><h2>Иконки приведены к единому визуальному масштабу</h2><span class="slide-no">07</span></header>
+      <div class="slide-body identity-layout">
+        <div>
+          <p class="copy-large">Обновлены иконки карточек на Главной и полный набор favicon для браузеров, мобильных устройств и Windows.</p>
+          <p class="icon-rules">Малые favicon используют максимум доступной площади. Размеры от 120 px получили безопасное поле для круглой обрезки. Между плитками сохранена прозрачность, края сглажены, белая кайма удалена.</p>
+        </div>
+        <img class="icon-art" src="public/android-chrome-512x512.png" alt="Иконка PascalABC.NET из четырёх цветных плиток">
+      </div>
+      <footer class="slide-foot"><span>16–512 px и многоразмерный ICO</span><span>SVG favicon намеренно исключён</span></footer>
+    </section>
+
+    <section class="slide" data-title="Техническая чистота">
+      <header class="slide-head"><h2>Технические сигналы сайта согласованы</h2><span class="slide-no">08</span></header>
+      <div class="slide-body">
+        <p class="copy-large">Сайт отдаёт корректные форматы и больше не приглашает поисковых роботов в удалённый локальный раздел Wiki.</p>
+        <div class="technical-path">
+          <div><strong>favicon.ico</strong><span>200 OK, корректный MIME, кадры от 16 до 256 px</span></div>
+          <div><strong>Manifest</strong><span>PNG 192 и 512 px для устанавливаемого веб-приложения</span></div>
+          <div><strong>robots.txt</strong><span>Добавлен запрет обхода локального префикса /wiki</span></div>
+          <div><strong>Sitemap</strong><span>Пересобран, адресов локального /wiki нет</span></div>
+        </div>
+      </div>
+      <footer class="slide-foot"><span>Статическая сборка Astro</span><span>Последняя полная сборка прошла без ошибок</span></footer>
+    </section>
+
+    <section class="slide" data-title="Текущее состояние">
+      <header class="slide-head"><h2>Основная работа завершена, осталась проверка после публикации</h2><span class="slide-no">09</span></header>
+      <div class="slide-body status">
+        <div class="status-main"><strong>Содержание, адаптивность и визуальная система</strong> уже находятся в рабочей копии. Пользователь закоммитит накопленные изменения позже.</div>
+        <div class="next-steps">
+          <h3>Ближайшая проверка</h3>
+          <ol>
+            <li>Пересобрать и опубликовать сайт.</li>
+            <li>Удалить старый ярлык Windows.</li>
+            <li>Перезапустить Firefox и создать ярлык заново.</li>
+            <li>При повторной белой иконке проверить локальный Firefox shortcutCache.</li>
+          </ol>
+        </div>
+      </div>
+      <footer class="slide-foot"><span>Следующий этап</span><span>Проверка опубликованной сборки</span></footer>
+    </section>
+  </main>
+
+  <div class="keyboard-hint">← → или пробел для навигации · F для полноэкранного режима</div>
+  <nav class="controls" aria-label="Навигация по презентации">
+    <button type="button" id="prev" aria-label="Предыдущий слайд">‹</button>
+    <span class="counter" id="counter">1 / 9</span>
+    <button type="button" id="next" aria-label="Следующий слайд">›</button>
+  </nav>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const counter = document.getElementById('counter');
+      const progress = document.getElementById('progress');
+      let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.slice(1)) - 1 || 0));
+      let touchStartX = null;
+
+      function show(nextIndex) {
+        index = (nextIndex + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        counter.textContent = `${index + 1} / ${slides.length}`;
+        progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+        history.replaceState(null, '', `#${index + 1}`);
+        document.title = `${slides[index].dataset.title}: PascalABC.NET`;
+      }
+
+      document.getElementById('prev').addEventListener('click', () => show(index - 1));
+      document.getElementById('next').addEventListener('click', () => show(index + 1));
+
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(event.key)) {
+          event.preventDefault();
+          show(index + 1);
+        } else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) {
+          event.preventDefault();
+          show(index - 1);
+        } else if (event.key === 'Home') {
+          show(0);
+        } else if (event.key === 'End') {
+          show(slides.length - 1);
+        } else if (event.key.toLowerCase() === 'f') {
+          document.documentElement.requestFullscreen?.();
+        }
+      });
+
+      document.addEventListener('touchstart', event => {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+
+      document.addEventListener('touchend', event => {
+        if (touchStartX === null) return;
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) > 55) show(index + (delta < 0 ? 1 : -1));
+        touchStartX = null;
+      }, { passive: true });
+
+      show(index);
+    })();
+  </script>
+</body>
+</html>

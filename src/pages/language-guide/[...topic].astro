@@ -1,0 +1,32 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import LanguageGuideLayout from '../../layouts/LanguageGuideLayout.astro';
+import { createGuideManifest, type GuideManifest, type GuideTopic } from '../../lib/language-guide';
+
+// A rest parameter includes the entry URL without an unconditional index.astro.
+// No production paths, including /language-guide/ itself, can be emitted.
+export async function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  const guide = createGuideManifest(await getCollection('languageGuideNext'), 'ru');
+  return [
+    { params: { topic: undefined }, props: { guide } },
+    ...guide.topics.map((topic) => ({ params: { topic: topic.id }, props: { guide, topic } }))
+  ];
+}
+
+interface Props {
+  guide: GuideManifest<CollectionEntry<'languageGuideNext'>>;
+  topic?: GuideTopic<CollectionEntry<'languageGuideNext'>>;
+}
+const { guide, topic } = Astro.props;
+if (!topic) return Astro.redirect(guide.topics[0].href);
+const rendered = topic ? await render(topic.entry) : undefined;
+if (rendered?.headings.some((heading) => heading.depth === 1)) {
+  throw new Error(`Language Guide ${topic?.id}: use ## headings in Markdown; the layout owns the only h1.`);
+}
+const Content = rendered?.Content;
+---
+
+<LanguageGuideLayout guide={guide} topic={topic} headings={rendered?.headings}>
+  {Content && <Content />}
+</LanguageGuideLayout>

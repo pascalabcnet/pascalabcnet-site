@@ -1,0 +1,54 @@
+---
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import LanguageGuideTree from '../components/LanguageGuideTree.astro';
+import { guideNeighbours, type GuideManifest, type GuideTopic } from '../lib/language-guide';
+import { guideUI } from '../i18n/language-guide';
+import '../styles/language-guide.css';
+
+interface Props {
+  guide: GuideManifest;
+  topic?: GuideTopic;
+  headings?: MarkdownHeading[];
+}
+
+const { guide, topic, headings = [] } = Astro.props;
+const text = guideUI[guide.locale];
+const title = topic?.title ?? text.title;
+const description = topic?.description ?? text.description;
+const { previous, next } = guideNeighbours(guide, topic?.id);
+const pageHeadings = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+
+<BaseLayout title={title} description={description} locale={guide.locale}>
+  <div class="language-guide" data-language-guide-next>
+    <p class="guide-dev-notice">{text.devNotice}</p>
+    <div class:list={['guide-layout', { 'guide-layout-with-toc': pageHeadings.length > 0 }]}>
+      <aside class="guide-sidebar">
+        <nav aria-label={text.contents}>
+          <LanguageGuideTree sections={guide.sections} locale={guide.locale} currentId={topic?.id} />
+        </nav>
+      </aside>
+      <article class="guide-article page-shell">
+        <h1>{title}</h1>
+        <div class="prose"><slot /></div>
+        <nav class="guide-pager" aria-label={text.readingNavigation}>
+          {previous ? (
+            <a href={previous.href} rel="prev"><span>← {text.previous}</span><strong>{previous.title}</strong></a>
+          ) : <span />}
+          {next && (
+            <a class="guide-next" href={next.href} rel="next"><span>{text.next} →</span><strong>{next.title}</strong></a>
+          )}
+        </nav>
+      </article>
+      {pageHeadings.length > 0 && (
+        <nav class="guide-page-toc" aria-label={text.onThisPage}>
+          <p>{text.onThisPage}</p>
+          <ul>{pageHeadings.map((heading) => (
+            <li class:list={{ 'guide-subheading': heading.depth === 3 }}><a href={`#${heading.slug}`}>{heading.text}</a></li>
+          ))}</ul>
+        </nav>
+      )}
+    </div>
+  </div>
+</BaseLayout>

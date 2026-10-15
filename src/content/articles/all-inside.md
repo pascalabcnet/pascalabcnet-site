@@ -4,7 +4,7 @@ displayTitle: Всё внутри
 
 description: "Описание методов и конструкторов непосредственно внутри классов и записей в PascalABC.NET."
 
-category: Язык PascalABC.NET
+category: Язык
 
 tags:
   - классы

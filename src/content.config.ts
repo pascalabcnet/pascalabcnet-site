@@ -100,9 +100,7 @@ const examples = defineCollection({
   })
 });
 
-const articles = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
-  schema: z.object({
+const articleSchema = z.object({
     title: z.string(),
     displayTitle: z.string().optional(),
     description: z.string(),
@@ -111,7 +109,16 @@ const articles = defineCollection({
     tags: z.array(z.string()).default([]),
     legacyUrls: z.array(z.string()).default([]),
     draft: z.boolean().default(false)
-  })
+  });
+
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
+  schema: articleSchema
+});
+
+const articlesEn = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles-en' }),
+  schema: articleSchema
 });
 
 // Keep the experimental corpus out of production content stores as well as routes.
@@ -128,4 +135,4 @@ const languageGuideNext = defineCollection({
   })
 });
 
-export const collections = { pages, news, newsEn, conferences, olympiads, examples, articles, languageGuideNext };
+export const collections = { pages, news, newsEn, conferences, olympiads, examples, articles, articlesEn, languageGuideNext };

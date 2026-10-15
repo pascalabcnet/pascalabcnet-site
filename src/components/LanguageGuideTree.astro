@@ -1,0 +1,30 @@
+---
+import type { GuideGroup } from '../lib/language-guide';
+import { guideHref } from '../lib/language-guide';
+import { guideUI } from '../i18n/language-guide';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  sections: GuideGroup[];
+  locale: Locale;
+  currentId?: string;
+}
+const { sections, locale, currentId } = Astro.props;
+const text = guideUI[locale];
+---
+
+<ul class="guide-tree">
+  <li><a class="guide-home-link" href={guideHref(undefined, locale)} aria-current={currentId ? undefined : 'page'}>{text.guideHome}</a></li>
+  {sections.map((section) => (
+    <li>
+      <details open={!currentId || section.topics.some((topic) => topic.id === currentId)}>
+        <summary id={`section-${section.id}`}>{text.sections[section.id]}</summary>
+        <ul class="guide-topic-list">
+          {section.topics.map((topic) => (
+            <li><a href={topic.href} aria-current={topic.id === currentId ? 'page' : undefined}>{topic.title}</a></li>
+          ))}
+        </ul>
+      </details>
+    </li>
+  ))}
+</ul>

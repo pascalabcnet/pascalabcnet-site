@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleArchive from '../../../components/ArticleArchive.astro';
+import { publishedCategories } from '../../../lib/article-categories';
+
+const pageSize = 8;
+const allItems = (await getCollection('articlesEn', ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+const totalPages = Math.max(1, Math.ceil(allItems.length / pageSize));
+---
+<BaseLayout locale="en" title="PascalABC.NET Articles: Algorithms and .NET Libraries" description="Practical PascalABC.NET tutorials with complete code examples: priority queues, Dijkstra's shortest-path algorithm, and .NET 10 libraries.">
+  <ArticleArchive locale="en" items={allItems.slice(0, pageSize)} categories={publishedCategories(allItems, 'en')} currentPage={1} totalPages={totalPages} />
+</BaseLayout>

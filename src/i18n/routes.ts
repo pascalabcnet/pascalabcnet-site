@@ -2,7 +2,13 @@ import type { Locale } from './ui';
 
 const pairs: Record<string, string> = {
   '/': '/en/',
+  '/articles/': '/en/articles/',
+  '/articles/priorityqueue-dotnet10/': '/en/articles/priorityqueue-dotnet10/',
+  '/articles/dijkstra/': '/en/articles/dijkstra/',
+  '/articles/category/dotnet/': '/en/articles/category/dotnet/',
+  '/articles/category/algorithms/': '/en/articles/category/algorithms/',
   '/about/': '/en/about/',
+  '/roadmap/': '/en/roadmap/',
   '/downloads/': '/en/downloads/',
   '/developers/': '/en/developers/',
   '/license/': '/en/license/',

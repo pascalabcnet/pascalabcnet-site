@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleArchive from '../../../components/ArticleArchive.astro';
+import { publishedCategories } from '../../../lib/article-categories';
+
+export async function getStaticPaths() {
+  const pageSize = 8;
+  const allItems = (await getCollection('articles', ({ data }) => !data.draft))
+    .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+  const categories = publishedCategories(allItems);
+  return categories.flatMap(category => {
+    const filteredItems = allItems.filter(item => item.data.category === category.label);
+    const totalPages = Math.ceil(filteredItems.length / pageSize);
+    return Array.from({ length: totalPages }, (_, index) => ({
+      params: { path: index === 0 ? category.slug : `${category.slug}/page/${index + 1}` },
+      props: {
+        category,
+        categories,
+        items: filteredItems.slice(index * pageSize, (index + 1) * pageSize),
+        currentPage: index + 1,
+        totalPages,
+      },
+    }));
+  });
+}
+
+const { category, categories, items, currentPage, totalPages } = Astro.props;
+---
+<BaseLayout title={`Статьи: ${category.label}${currentPage > 1 ? ` — страница ${currentPage}` : ''}`} description={`Статьи о PascalABC.NET в рубрике «${category.label}».`}>
+  <ArticleArchive items={items} categories={categories} selectedCategory={category.slug} pageBase={`/articles/category/${category.slug}/`} currentPage={currentPage} totalPages={totalPages} />
+</BaseLayout>

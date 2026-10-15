@@ -1,0 +1,997 @@
+{
+  "sourceToc": "PABCNetHelp/Table of Contents New2.hhc",
+  "purpose": "Editorial source mapping only: not redirects and not an HTML importer.",
+  "topics": [
+    {
+      "topicId": "program-structure",
+      "file": "src/content/language-guide-next/ru/01_program/01_program-structure.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/index_progrstruct.html"
+      ]
+    },
+    {
+      "topicId": "identifiers",
+      "file": "src/content/language-guide-next/ru/01_program/02_identifiers.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/identifiers.html"
+      ]
+    },
+    {
+      "topicId": "comments",
+      "file": "src/content/language-guide-next/ru/01_program/03_comments.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/comments.html"
+      ]
+    },
+    {
+      "topicId": "variables",
+      "file": "src/content/language-guide-next/ru/01_program/04_variables.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/vardef.html"
+      ]
+    },
+    {
+      "topicId": "constants",
+      "file": "src/content/language-guide-next/ru/01_program/05_constants.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/constdef.html"
+      ]
+    },
+    {
+      "topicId": "type-declarations",
+      "file": "src/content/language-guide-next/ru/01_program/06_type-declarations.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/typesdef.html"
+      ]
+    },
+    {
+      "topicId": "labels",
+      "file": "src/content/language-guide-next/ru/01_program/07_labels.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/labeldef.html"
+      ]
+    },
+    {
+      "topicId": "scope",
+      "file": "src/content/language-guide-next/ru/01_program/08_scope.md",
+      "legacySources": [
+        "LangGuide/_ProgrStruct_Defs/scope.html"
+      ]
+    },
+    {
+      "topicId": "short-program",
+      "file": "src/content/language-guide-next/ru/01_program/09_short-program.md",
+      "legacySources": []
+    },
+    {
+      "topicId": "types",
+      "file": "src/content/language-guide-next/ru/02_types/01_types.md",
+      "legacySources": [
+        "LangGuide/Types/index_types.html"
+      ]
+    },
+    {
+      "topicId": "value-and-reference-types",
+      "file": "src/content/language-guide-next/ru/02_types/02_value-and-reference-types.md",
+      "legacySources": [
+        "LangGuide/Types/value_ref_types.html"
+      ]
+    },
+    {
+      "topicId": "integer-types",
+      "file": "src/content/language-guide-next/ru/02_types/03_integer-types.md",
+      "legacySources": [
+        "LangGuide/Types/integer.html"
+      ]
+    },
+    {
+      "topicId": "real-types",
+      "file": "src/content/language-guide-next/ru/02_types/04_real-types.md",
+      "legacySources": [
+        "LangGuide/Types/real.html"
+      ]
+    },
+    {
+      "topicId": "boolean",
+      "file": "src/content/language-guide-next/ru/02_types/05_boolean.md",
+      "legacySources": [
+        "LangGuide/Types/boolean.html"
+      ]
+    },
+    {
+      "topicId": "char",
+      "file": "src/content/language-guide-next/ru/02_types/06_char.md",
+      "legacySources": [
+        "LangGuide/Types/char.html"
+      ]
+    },
+    {
+      "topicId": "enum-and-subrange-types",
+      "file": "src/content/language-guide-next/ru/02_types/07_enum-and-subrange-types.md",
+      "legacySources": [
+        "LangGuide/Types/enum_subrange.html"
+      ]
+    },
+    {
+      "topicId": "strings",
+      "file": "src/content/language-guide-next/ru/02_types/08_strings.md",
+      "legacySources": [
+        "LangGuide/Types/string.html"
+      ]
+    },
+    {
+      "topicId": "string-interpolation",
+      "file": "src/content/language-guide-next/ru/02_types/09_string-interpolation.md",
+      "legacySources": []
+    },
+    {
+      "topicId": "short-strings",
+      "file": "src/content/language-guide-next/ru/02_types/10_short-strings.md",
+      "legacySources": [
+        "LangGuide/Types/valuestrings.html"
+      ]
+    },
+    {
+      "topicId": "string-members",
+      "file": "src/content/language-guide-next/ru/02_types/11_string-members.md",
+      "legacySources": [
+        "LangGuide/Types/stringmembers.html"
+      ]
+    },
+    {
+      "topicId": "arrays",
+      "file": "src/content/language-guide-next/ru/02_types/12_arrays.md",
+      "legacySources": [
+        "LangGuide/Types/arrays.html"
+      ]
+    },
+    {
+      "topicId": "dynamic-arrays",
+      "file": "src/content/language-guide-next/ru/02_types/13_dynamic-arrays.md",
+      "legacySources": [
+        "LangGuide/Types/dynamicarrays.html"
+      ]
+    },
+    {
+      "topicId": "static-arrays",
+      "file": "src/content/language-guide-next/ru/02_types/14_static-arrays.md",
+      "legacySources": [
+        "LangGuide/Types/staticarrays.html"
+      ]
+    },
+    {
+      "topicId": "records",
+      "file": "src/content/language-guide-next/ru/02_types/15_records.md",
+      "legacySources": [
+        "LangGuide/Types/records.html"
+      ]
+    },
+    {
+      "topicId": "tuples",
+      "file": "src/content/language-guide-next/ru/02_types/16_tuples.md",
+      "legacySources": [
+        "LangGuide/Types/tuples.html"
+      ]
+    },
+    {
+      "topicId": "sets",
+      "file": "src/content/language-guide-next/ru/02_types/17_sets.md",
+      "legacySources": [
+        "LangGuide/Types/sets.html"
+      ]
+    },
+    {
+      "topicId": "file-types",
+      "file": "src/content/language-guide-next/ru/02_types/18_file-types.md",
+      "legacySources": [
+        "LangGuide/Types/files.html"
+      ]
+    },
+    {
+      "topicId": "sequences",
+      "file": "src/content/language-guide-next/ru/02_types/19_sequences.md",
+      "legacySources": [
+        "LangGuide/Types/sequences.html"
+      ]
+    },
+    {
+      "topicId": "pointers",
+      "file": "src/content/language-guide-next/ru/02_types/20_pointers.md",
+      "legacySources": [
+        "LangGuide/Types/pointers.html"
+      ]
+    },
+    {
+      "topicId": "procedural-types",
+      "file": "src/content/language-guide-next/ru/02_types/21_procedural-types.md",
+      "legacySources": [
+        "LangGuide/Types/proctype.html"
+      ]
+    },
+    {
+      "topicId": "type-compatibility",
+      "file": "src/content/language-guide-next/ru/02_types/22_type-compatibility.md",
+      "legacySources": [
+        "LangGuide/Types/typecompatibility.html"
+      ]
+    },
+    {
+      "topicId": "dotnet-types",
+      "file": "src/content/language-guide-next/ru/02_types/23_dotnet-types.md",
+      "legacySources": [
+        "LangGuide/Types/typesprojection.html"
+      ]
+    },
+    {
+      "topicId": "expressions",
+      "file": "src/content/language-guide-next/ru/03_expressions/01_expressions.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/index_expressions.html"
+      ]
+    },
+    {
+      "topicId": "arithmetic-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/02_arithmetic-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/arithmop.html"
+      ]
+    },
+    {
+      "topicId": "logical-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/03_logical-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/logicop.html"
+      ]
+    },
+    {
+      "topicId": "bitwise-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/04_bitwise-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/bitop.html"
+      ]
+    },
+    {
+      "topicId": "comparison-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/05_comparison-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/relop.html"
+      ]
+    },
+    {
+      "topicId": "string-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/06_string-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/stringop.html"
+      ]
+    },
+    {
+      "topicId": "pointer-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/07_pointer-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/pointerop.html"
+      ]
+    },
+    {
+      "topicId": "set-operators",
+      "file": "src/content/language-guide-next/ru/03_expressions/08_set-operators.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/setop.html"
+      ]
+    },
+    {
+      "topicId": "address-operator",
+      "file": "src/content/language-guide-next/ru/03_expressions/09_address-operator.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/addrop.html"
+      ]
+    },
+    {
+      "topicId": "is-as",
+      "file": "src/content/language-guide-next/ru/03_expressions/10_is-as.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/isasop.html"
+      ]
+    },
+    {
+      "topicId": "new",
+      "file": "src/content/language-guide-next/ru/03_expressions/11_new.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/newop.html"
+      ]
+    },
+    {
+      "topicId": "typeof-sizeof",
+      "file": "src/content/language-guide-next/ru/03_expressions/12_typeof-sizeof.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/typeof_sizeof.html"
+      ]
+    },
+    {
+      "topicId": "type-casts",
+      "file": "src/content/language-guide-next/ru/03_expressions/13_type-casts.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/typecast.html"
+      ]
+    },
+    {
+      "topicId": "conditional-expressions",
+      "file": "src/content/language-guide-next/ru/03_expressions/14_conditional-expressions.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/IfOperation.html"
+      ]
+    },
+    {
+      "topicId": "ranges",
+      "file": "src/content/language-guide-next/ru/03_expressions/15_ranges.md",
+      "legacySources": []
+    },
+    {
+      "topicId": "slices",
+      "file": "src/content/language-guide-next/ru/03_expressions/16_slices.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/Slice.html"
+      ]
+    },
+    {
+      "topicId": "operator-precedence",
+      "file": "src/content/language-guide-next/ru/03_expressions/17_operator-precedence.md",
+      "legacySources": [
+        "LangGuide/Operations_Expressions/oppriority.html"
+      ]
+    },
+    {
+      "topicId": "statements",
+      "file": "src/content/language-guide-next/ru/04_statements/01_statements.md",
+      "legacySources": [
+        "LangGuide/Operators/index_statements.html"
+      ]
+    },
+    {
+      "topicId": "assignment",
+      "file": "src/content/language-guide-next/ru/04_statements/02_assignment.md",
+      "legacySources": [
+        "LangGuide/Operators/assign.html"
+      ]
+    },
+    {
+      "topicId": "compound-assignment",
+      "file": "src/content/language-guide-next/ru/04_statements/03_compound-assignment.md",
+      "legacySources": [
+        "LangGuide/Operators/assignext.html"
+      ]
+    },
+    {
+      "topicId": "deconstruction",
+      "file": "src/content/language-guide-next/ru/04_statements/04_deconstruction.md",
+      "legacySources": []
+    },
+    {
+      "topicId": "compound-statement",
+      "file": "src/content/language-guide-next/ru/04_statements/05_compound-statement.md",
+      "legacySources": [
+        "LangGuide/Operators/beginend.html"
+      ]
+    },
+    {
+      "topicId": "empty-statement",
+      "file": "src/content/language-guide-next/ru/04_statements/06_empty-statement.md",
+      "legacySources": [
+        "LangGuide/Operators/emptyop.html"
+      ]
+    },
+    {
+      "topicId": "if",
+      "file": "src/content/language-guide-next/ru/04_statements/07_if.md",
+      "legacySources": [
+        "LangGuide/Operators/if.html"
+      ]
+    },
+    {
+      "topicId": "variable-statement",
+      "file": "src/content/language-guide-next/ru/04_statements/08_variable-statement.md",
+      "legacySources": [
+        "LangGuide/Operators/var_statement.html"
+      ]
+    },
+    {
+      "topicId": "case",
+      "file": "src/content/language-guide-next/ru/04_statements/09_case.md",
+      "legacySources": [
+        "LangGuide/Operators/case.html"
+      ]
+    },
+    {
+      "topicId": "pattern-matching",
+      "file": "src/content/language-guide-next/ru/04_statements/10_pattern-matching.md",
+      "legacySources": []
+    },
+    {
+      "topicId": "for",
+      "file": "src/content/language-guide-next/ru/04_statements/11_for.md",
+      "legacySources": [
+        "LangGuide/Operators/for.html"
+      ]
+    },
+    {
+      "topicId": "loop",
+      "file": "src/content/language-guide-next/ru/04_statements/12_loop.md",
+      "legacySources": [
+        "LangGuide/Operators/loop.html"
+      ]
+    },
+    {
+      "topicId": "foreach",
+      "file": "src/content/language-guide-next/ru/04_statements/13_foreach.md",
+      "legacySources": [
+        "LangGuide/Operators/foreach.html"
+      ]
+    },
+    {
+      "topicId": "while-repeat",
+      "file": "src/content/language-guide-next/ru/04_statements/14_while-repeat.md",
+      "legacySources": [
+        "LangGuide/Operators/while.html"
+      ]
+    },
+    {
+      "topicId": "with",
+      "file": "src/content/language-guide-next/ru/04_statements/15_with.md",
+      "legacySources": [
+        "LangGuide/Operators/with.html"
+      ]
+    },
+    {
+      "topicId": "goto",
+      "file": "src/content/language-guide-next/ru/04_statements/16_goto.md",
+      "legacySources": [
+        "LangGuide/Operators/goto.html"
+      ]
+    },
+    {
+      "topicId": "break-continue-exit",
+      "file": "src/content/language-guide-next/ru/04_statements/17_break-continue-exit.md",
+      "legacySources": [
+        "LangGuide/Operators/break.html"
+      ]
+    },
+    {
+      "topicId": "yield",
+      "file": "src/content/language-guide-next/ru/04_statements/18_yield.md",
+      "legacySources": [
+        "LangGuide/Operators/yield.html"
+      ]
+    },
+    {
+      "topicId": "yield-sequence",
+      "file": "src/content/language-guide-next/ru/04_statements/19_yield-sequence.md",
+      "legacySources": [
+        "LangGuide/Operators/yieldsequence.html"
+      ]
+    },
+    {
+      "topicId": "try-except",
+      "file": "src/content/language-guide-next/ru/04_statements/20_try-except.md",
+      "legacySources": [
+        "LangGuide/Operators/try_except.html"
+      ]
+    },
+    {
+      "topicId": "try-finally",
+      "file": "src/content/language-guide-next/ru/04_statements/21_try-finally.md",
+      "legacySources": [
+        "LangGuide/Operators/try_finally.html"
+      ]
+    },
+    {
+      "topicId": "raise",
+      "file": "src/content/language-guide-next/ru/04_statements/22_raise.md",
+      "legacySources": [
+        "LangGuide/Operators/raise.html"
+      ]
+    },
+    {
+      "topicId": "procedure-operators",
+      "file": "src/content/language-guide-next/ru/04_statements/23_procedure-operators.md",
+      "legacySources": [
+        "LangGuide/Operators/plusequal.html"
+      ]
+    },
+    {
+      "topicId": "lock",
+      "file": "src/content/language-guide-next/ru/04_statements/24_lock.md",
+      "legacySources": [
+        "LangGuide/Operators/lock.html"
+      ]
+    },
+    {
+      "topicId": "routines",
+      "file": "src/content/language-guide-next/ru/05_routines/01_routines.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/procdef.html"
+      ]
+    },
+    {
+      "topicId": "routine-calls",
+      "file": "src/content/language-guide-next/ru/05_routines/02_routine-calls.md",
+      "legacySources": [
+        "LangGuide/Operators/proccall.html",
+        "LangGuide/Operations_Expressions/funccall.html"
+      ]
+    },
+    {
+      "topicId": "parameters",
+      "file": "src/content/language-guide-next/ru/05_routines/03_parameters.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/params.html"
+      ]
+    },
+    {
+      "topicId": "variadic-parameters",
+      "file": "src/content/language-guide-next/ru/05_routines/04_variadic-parameters.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/variableparams.html"
+      ]
+    },
+    {
+      "topicId": "default-parameters",
+      "file": "src/content/language-guide-next/ru/05_routines/05_default-parameters.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/defaultparams.html"
+      ]
+    },
+    {
+      "topicId": "short-routines",
+      "file": "src/content/language-guide-next/ru/05_routines/06_short-routines.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/shortfundef.html"
+      ]
+    },
+    {
+      "topicId": "named-arguments",
+      "file": "src/content/language-guide-next/ru/05_routines/07_named-arguments.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/namedarguments.html"
+      ]
+    },
+    {
+      "topicId": "forward-declarations",
+      "file": "src/content/language-guide-next/ru/05_routines/08_forward-declarations.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/forward.html"
+      ]
+    },
+    {
+      "topicId": "routine-overloading",
+      "file": "src/content/language-guide-next/ru/05_routines/09_routine-overloading.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/overloading.html"
+      ]
+    },
+    {
+      "topicId": "external-routines",
+      "file": "src/content/language-guide-next/ru/05_routines/10_external-routines.md",
+      "legacySources": [
+        "LangGuide/ProcFunc/external.html"
+      ]
+    },
+    {
+      "topicId": "module-structure",
+      "file": "src/content/language-guide-next/ru/06_modules/01_module-structure.md",
+      "legacySources": [
+        "LangGuide/Modules/indexmodule.html"
+      ]
+    },
+    {
+      "topicId": "uses",
+      "file": "src/content/language-guide-next/ru/06_modules/02_uses.md",
+      "legacySources": [
+        "LangGuide/Modules/uses.html"
+      ]
+    },
+    {
+      "topicId": "short-units",
+      "file": "src/content/language-guide-next/ru/06_modules/03_short-units.md",
+      "legacySources": [
+        "LangGuide/Modules/simplemodule.html"
+      ]
+    },
+    {
+      "topicId": "circular-unit-references",
+      "file": "src/content/language-guide-next/ru/06_modules/04_circular-unit-references.md",
+      "legacySources": [
+        "LangGuide/Modules/cyclemodules.html"
+      ]
+    },
+    {
+      "topicId": "libraries",
+      "file": "src/content/language-guide-next/ru/06_modules/05_libraries.md",
+      "legacySources": [
+        "LangGuide/Modules/libraries.html"
+      ]
+    },
+    {
+      "topicId": "units-and-libraries",
+      "file": "src/content/language-guide-next/ru/06_modules/06_units-and-libraries.md",
+      "legacySources": [
+        "LangGuide/Modules/libraries_units.html"
+      ]
+    },
+    {
+      "topicId": "documentation-comments",
+      "file": "src/content/language-guide-next/ru/06_modules/07_documentation-comments.md",
+      "legacySources": [
+        "LangGuide/Modules/doccomments.html"
+      ]
+    },
+    {
+      "topicId": "classes",
+      "file": "src/content/language-guide-next/ru/07_classes/01_classes.md",
+      "legacySources": [
+        "LangGuide/Classes/index_classes.html"
+      ]
+    },
+    {
+      "topicId": "member-visibility",
+      "file": "src/content/language-guide-next/ru/07_classes/02_member-visibility.md",
+      "legacySources": [
+        "LangGuide/Classes/visibility.html"
+      ]
+    },
+    {
+      "topicId": "methods",
+      "file": "src/content/language-guide-next/ru/07_classes/03_methods.md",
+      "legacySources": [
+        "LangGuide/Classes/methods.html"
+      ]
+    },
+    {
+      "topicId": "field-initializers",
+      "file": "src/content/language-guide-next/ru/07_classes/04_field-initializers.md",
+      "legacySources": [
+        "LangGuide/Classes/initfields.html"
+      ]
+    },
+    {
+      "topicId": "constructors",
+      "file": "src/content/language-guide-next/ru/07_classes/05_constructors.md",
+      "legacySources": [
+        "LangGuide/Classes/constrdestr.html"
+      ]
+    },
+    {
+      "topicId": "forward-class-declarations",
+      "file": "src/content/language-guide-next/ru/07_classes/06_forward-class-declarations.md",
+      "legacySources": [
+        "LangGuide/Classes/classdefbefore.html"
+      ]
+    },
+    {
+      "topicId": "self",
+      "file": "src/content/language-guide-next/ru/07_classes/07_self.md",
+      "legacySources": [
+        "LangGuide/Classes/self.html"
+      ]
+    },
+    {
+      "topicId": "properties",
+      "file": "src/content/language-guide-next/ru/07_classes/08_properties.md",
+      "legacySources": [
+        "LangGuide/Classes/properties.html"
+      ]
+    },
+    {
+      "topicId": "indexed-properties",
+      "file": "src/content/language-guide-next/ru/07_classes/09_indexed-properties.md",
+      "legacySources": [
+        "LangGuide/Classes/indexedproperties.html"
+      ]
+    },
+    {
+      "topicId": "inheritance",
+      "file": "src/content/language-guide-next/ru/07_classes/10_inheritance.md",
+      "legacySources": [
+        "LangGuide/Classes/inheritance.html"
+      ]
+    },
+    {
+      "topicId": "inherited",
+      "file": "src/content/language-guide-next/ru/07_classes/11_inherited.md",
+      "legacySources": [
+        "LangGuide/Classes/inherited.html"
+      ]
+    },
+    {
+      "topicId": "constructor-inheritance",
+      "file": "src/content/language-guide-next/ru/07_classes/12_constructor-inheritance.md",
+      "legacySources": [
+        "LangGuide/Classes/constrinheritance.html"
+      ]
+    },
+    {
+      "topicId": "virtual-methods",
+      "file": "src/content/language-guide-next/ru/07_classes/13_virtual-methods.md",
+      "legacySources": [
+        "LangGuide/Classes/virtual.html"
+      ]
+    },
+    {
+      "topicId": "abstract-classes",
+      "file": "src/content/language-guide-next/ru/07_classes/14_abstract-classes.md",
+      "legacySources": [
+        "LangGuide/Classes/abstractmethods.html"
+      ]
+    },
+    {
+      "topicId": "operator-overloading",
+      "file": "src/content/language-guide-next/ru/07_classes/15_operator-overloading.md",
+      "legacySources": [
+        "LangGuide/Classes/operoverloading.html"
+      ]
+    },
+    {
+      "topicId": "static-members",
+      "file": "src/content/language-guide-next/ru/07_classes/16_static-members.md",
+      "legacySources": [
+        "LangGuide/Classes/classconstr.html"
+      ]
+    },
+    {
+      "topicId": "extension-methods",
+      "file": "src/content/language-guide-next/ru/07_classes/17_extension-methods.md",
+      "legacySources": [
+        "LangGuide/Classes/extensionmethods.html"
+      ]
+    },
+    {
+      "topicId": "attributes",
+      "file": "src/content/language-guide-next/ru/07_classes/18_attributes.md",
+      "legacySources": [
+        "LangGuide/Classes/attributes.html"
+      ]
+    },
+    {
+      "topicId": "anonymous-classes",
+      "file": "src/content/language-guide-next/ru/07_classes/19_anonymous-classes.md",
+      "legacySources": [
+        "LangGuide/Classes/anontypes.html"
+      ]
+    },
+    {
+      "topicId": "auto-classes",
+      "file": "src/content/language-guide-next/ru/07_classes/20_auto-classes.md",
+      "legacySources": [
+        "LangGuide/Classes/autoclasses.html"
+      ]
+    },
+    {
+      "topicId": "exceptions",
+      "file": "src/content/language-guide-next/ru/08_exceptions/01_exceptions.md",
+      "legacySources": [
+        "LangGuide/ExceptionHandling/Overview.html"
+      ]
+    },
+    {
+      "topicId": "standard-exceptions",
+      "file": "src/content/language-guide-next/ru/08_exceptions/02_standard-exceptions.md",
+      "legacySources": [
+        "LangGuide/ExceptionHandling/StandardExceptions.html"
+      ]
+    },
+    {
+      "topicId": "custom-exceptions",
+      "file": "src/content/language-guide-next/ru/08_exceptions/03_custom-exceptions.md",
+      "legacySources": [
+        "LangGuide/ExceptionHandling/userExceptions.html"
+      ]
+    },
+    {
+      "topicId": "reraise",
+      "file": "src/content/language-guide-next/ru/08_exceptions/04_reraise.md",
+      "legacySources": [
+        "LangGuide/ExceptionHandling/reraise.html"
+      ]
+    },
+    {
+      "topicId": "exception-examples",
+      "file": "src/content/language-guide-next/ru/08_exceptions/05_exception-examples.md",
+      "legacySources": [
+        "LangGuide/ExceptionHandling/ExeptionsExamples.html"
+      ]
+    },
+    {
+      "topicId": "interfaces",
+      "file": "src/content/language-guide-next/ru/09_interfaces/01_interfaces.md",
+      "legacySources": [
+        "LangGuide/Interfaces/indexinterf.html"
+      ]
+    },
+    {
+      "topicId": "multiple-interfaces",
+      "file": "src/content/language-guide-next/ru/09_interfaces/02_multiple-interfaces.md",
+      "legacySources": [
+        "LangGuide/Interfaces/manyinterf.html"
+      ]
+    },
+    {
+      "topicId": "generic-types",
+      "file": "src/content/language-guide-next/ru/10_generics/01_generic-types.md",
+      "legacySources": [
+        "LangGuide/Generics/index_generics.html"
+      ]
+    },
+    {
+      "topicId": "generic-routines",
+      "file": "src/content/language-guide-next/ru/10_generics/02_generic-routines.md",
+      "legacySources": [
+        "LangGuide/Generics/generic_sub.html"
+      ]
+    },
+    {
+      "topicId": "generic-routine-parameters",
+      "file": "src/content/language-guide-next/ru/10_generics/03_generic-routine-parameters.md",
+      "legacySources": [
+        "LangGuide/Generics/generic_sub_params.html"
+      ]
+    },
+    {
+      "topicId": "generic-constraints",
+      "file": "src/content/language-guide-next/ru/10_generics/04_generic-constraints.md",
+      "legacySources": [
+        "LangGuide/Generics/generic_constraints.html"
+      ]
+    },
+    {
+      "topicId": "covariance",
+      "file": "src/content/language-guide-next/ru/10_generics/05_covariance.md",
+      "legacySources": [
+        "LangGuide/Generics/covariance.html"
+      ]
+    },
+    {
+      "topicId": "lambda-expressions",
+      "file": "src/content/language-guide-next/ru/11_functional/01_lambda-expressions.md",
+      "legacySources": [
+        "LangGuide/FuncProgramming/lambdas.html"
+      ]
+    },
+    {
+      "topicId": "variable-capture",
+      "file": "src/content/language-guide-next/ru/11_functional/02_variable-capture.md",
+      "legacySources": [
+        "LangGuide/FuncProgramming/capture_variables.html"
+      ]
+    },
+    {
+      "topicId": "sequence-methods",
+      "file": "src/content/language-guide-next/ru/11_functional/03_sequence-methods.md",
+      "legacySources": [
+        "LangGuide/FuncProgramming/extensionmethodsforsequences.html"
+      ]
+    },
+    {
+      "topicId": "memory-management",
+      "file": "src/content/language-guide-next/ru/12_memory/01_memory-management.md",
+      "legacySources": [
+        "LangGuide/MemoryManagement/index_memory.html"
+      ]
+    },
+    {
+      "topicId": "openmp",
+      "file": "src/content/language-guide-next/ru/13_openmp/01_openmp.md",
+      "legacySources": [
+        "LangGuide/OpenMP/indexopenmp.html"
+      ]
+    },
+    {
+      "topicId": "parallel-for",
+      "file": "src/content/language-guide-next/ru/13_openmp/02_parallel-for.md",
+      "legacySources": [
+        "LangGuide/OpenMP/parallelfor.html"
+      ]
+    },
+    {
+      "topicId": "parallel-reduction",
+      "file": "src/content/language-guide-next/ru/13_openmp/03_parallel-reduction.md",
+      "legacySources": [
+        "LangGuide/OpenMP/reduction.html"
+      ]
+    },
+    {
+      "topicId": "parallel-sections",
+      "file": "src/content/language-guide-next/ru/13_openmp/04_parallel-sections.md",
+      "legacySources": [
+        "LangGuide/OpenMP/sections.html"
+      ]
+    },
+    {
+      "topicId": "critical",
+      "file": "src/content/language-guide-next/ru/13_openmp/05_critical.md",
+      "legacySources": [
+        "LangGuide/OpenMP/sync.html"
+      ]
+    },
+    {
+      "topicId": "compiler-directives",
+      "file": "src/content/language-guide-next/ru/14_directives/01_compiler-directives.md",
+      "legacySources": [
+        "LangGuide/CompilerDirectives/index_directives.html"
+      ]
+    }
+  ],
+  "additionalSources": [
+    {
+      "source": "LangGuide/Classes/classcast.html",
+      "topicId": "type-casts",
+      "note": "Объединить описание приведения объектов с общей темой приведения типов."
+    },
+    {
+      "source": "LangGuide/Classes/isas.html",
+      "topicId": "is-as",
+      "note": "Старый вариант; использовать основную страницу операций is и as."
+    },
+    {
+      "source": "LangGuide/FuncProgramming/lambdasyntax.html",
+      "topicId": "lambda-expressions",
+      "note": "Полный синтаксис включить подразделом основной страницы."
+    },
+    {
+      "source": "LangGuide/Operations_Expressions/expressions.html",
+      "topicId": "expressions",
+      "note": "Явно устаревший вариант обзора; не переносить автоматически."
+    },
+    {
+      "source": "LangGuide/Operators/repeat.html",
+      "topicId": "while-repeat",
+      "note": "Текст уже включён в общую страницу циклов while и repeat."
+    },
+    {
+      "source": "LangGuide/ProcFunc/localglobal.html",
+      "topicId": "scope",
+      "note": "Материал об областях действия; также учесть при редактуре variables."
+    },
+    {
+      "source": "LangGuide/Types/equiv2.html",
+      "topicId": "type-compatibility",
+      "note": "Явно старый вариант; не переносить автоматически."
+    },
+    {
+      "source": "LangGuide/Types/charmembers.html",
+      "topicId": "char",
+      "note": "Краткое объяснение методов возможно в теме char; не дублировать библиотечный каталог."
+    }
+  ],
+  "excluded": [
+    {
+      "source": "LangGuide/index_lang_guide.html",
+      "reason": "Language overview removed from the new guide at the author's request; original HTML retained."
+    },
+    {
+      "source": "LangGuide/PABCSystemUnit/**",
+      "reason": "Generated from source documentation; deferred."
+    },
+    {
+      "source": "PABCUnits/**",
+      "reason": "Standard module documentation; generated separately and deferred."
+    },
+    {
+      "source": "LangGuide/FuncProgramming/Files/**",
+      "reason": "LinqDocGen output with possible hand-edited examples; generator workflow deferred."
+    },
+    {
+      "source": "LangGuide/FuncProgramming/list_extensionmethodsforsequences.html",
+      "reason": "Explicitly obsolete sequence methods list."
+    },
+    {
+      "source": "Common/**",
+      "reason": "General product information; not copied into the language reference."
+    },
+    {
+      "source": "ForEducation/**",
+      "reason": "Teaching tools are outside the language reference."
+    },
+    {
+      "source": "Tutorials/**",
+      "reason": "Tutorials are outside the language reference."
+    }
+  ]
+}

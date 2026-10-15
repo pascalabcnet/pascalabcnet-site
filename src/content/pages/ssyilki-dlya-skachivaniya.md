@@ -4,7 +4,7 @@ description: Загрузка PascalABC.NET для Windows и Linux, консо�
 slug: ssyilki-dlya-skachivaniya
 ---
 
-Выберите подходящий вариант PascalABC.NET. Для работы в привычной полной среде для Windows используйте **StandardPack**. Для современных возможностей .NET 10 рекомендуем multitarget-расширение **PascalABC.NET для Visual Studio Code**.
+Выберите подходящий вариант PascalABC.NET. Для работы в привычной полной среде для Windows используйте **StandardPack**. Для компиляции и запуска на .NET 10 доступны **Net10Pack для Windows**, multitarget-расширение **PascalABC.NET для Visual Studio Code** и консольный компилятор.
 
 **Текущая сборка PascalABC.NET: 4.0.0.3862 · 22.08.2026**
 <br/>
@@ -35,6 +35,23 @@ slug: ssyilki-dlya-skachivaniya
 </section>
 
 ## Современные инструменты
+
+<section class="download-hero" id="net10pack">
+  <p class="download-kicker">Версия с поддержкой .NET 10</p>
+  <h2>PascalABC.NET 4.0 Net10Pack для Windows</h2>
+  <p class="download-summary">Полная поставка PascalABC.NET для Windows. Включает:</p>
+  <ul>
+    <li>компилятор на платформе .NET Framework 4.7.2;</li>
+    <li>компилятор на платформе .NET 10.</li>
+  </ul>
+  <p>Переключение между платформами для компиляции и запуска программ — в меню «Программа».</p>
+  <div class="download-actions">
+    <a class="download-button download-button-primary" href="https://pascalabc.net/downloads/PascalABCNETSetupNet10.exe">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="2" x2="12" y2="16"/></svg>
+      Скачать PascalABC.NET 4.0 Net10Pack
+    </a>
+  </div>
+</section>
 
 <div class="download-grid download-grid-modern">
   <article class="download-card" id="console-net10">
